@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import "themes/material.blue-light.custom.css";
+
+@font-face{
+    font-family: yekan-r;
+    src: url(assets/fonts/YekanRegular.woff)
+}
+@font-face{
+    font-family: yekan-b;
+    src: url(assets/fonts/Yekan-Bold.woff)
+}
+body,html,h1,h2,h3,h4,h5,h6,a,span,div,p,b,strong,input,textarea,button{
+    font-family: yekan-r;
+}
+
+html, body {
+  margin: 0px;
+  min-height: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
