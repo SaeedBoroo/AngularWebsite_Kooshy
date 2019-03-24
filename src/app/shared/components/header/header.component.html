@@ -1,40 +1,64 @@
 <header>
     <dx-toolbar class="header-toolbar">
-        <dxi-item
-            *ngIf="menuToggleEnabled"
-            location="before"
-            widget="dxButton"
-            cssClass="menu-button"
-            [options]="{
-                icon: 'menu',
-                stylingMode: 'text',
-                onClick: toggleMenu
-            }">
-        </dxi-item>
-        <dxi-item
-            location="before"
-            cssClass="header-title"
-            *ngIf="title"
-            [text]="title">
-        </dxi-item>
-        <dxi-item
-            location="after"
-            locateInMenu="auto"
-            menuItemTemplate="menuItem">
-            <div *dxTemplate="let data of 'item'">
-                <dx-button
-                    class="user-button authorization"
-                    width="170px"
-                    height="100%"
-                    stylingMode="text">
-                    <div *dxTemplate="let data of 'content'">
-                        <app-user-panel [menuItems]="userMenuItems" menuMode="context"></app-user-panel>
-                    </div>
-                </dx-button>
+        <div class="row">
+            <div class="col-2">
+                    <dxi-item
+                    *ngIf="menuToggleEnabled"
+                    location="after"
+                    widget="dxButton"
+                    cssClass="menu-button"
+                    [options]="{
+                        icon: 'menu',
+                        stylingMode: 'text',
+                        onClick: toggleMenu
+                    }">
+                </dxi-item>
+                <dxi-item
+                    location="before"
+                    cssClass="header-title"
+                    *ngIf="title"
+                    [text]="title">
+                </dxi-item>
             </div>
-        </dxi-item>
-        <div *dxTemplate="let data of 'menuItem'">
-            <app-user-panel [menuItems]="userMenuItems" menuMode="list"></app-user-panel>
+
+
+            <div class="col-2">
+                    <dxi-item
+                    location="before"
+                    locateInMenu="auto"
+                    menuItemTemplate="menuItem">
+                    <div *dxTemplate="let data of 'item'">
+                        <dx-button
+                            class="user-button authorization"
+                            width="170px"
+                            height="100%"
+                            stylingMode="text">
+                            <div *dxTemplate="let data of 'content'">
+                                <app-user-panel [menuItems]="userMenuItems" menuMode="context"></app-user-panel>
+                            </div>
+                        </dx-button>
+                    </div>
+                </dxi-item>
+                <div *dxTemplate="let data of 'menuItem'">
+                    <app-user-panel [menuItems]="userMenuItems" menuMode="list"></app-user-panel>
+                </div>
+            </div>
+
+
+            <div class="col-8">
+                    <dxi-item
+                    location="center"
+                    cssClass="header-title">
+                        <dx-text-box
+                            class="header__txtsearch"
+                            [showClearButton]="true"
+
+                            placeholder="هرچه میخواهی را جستجو کن"
+                            valueChangeEvent="keyup"
+                            ></dx-text-box>
+                </dxi-item>
+            </div>
         </div>
+    
     </dx-toolbar>
 </header>

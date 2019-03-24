@@ -21,3 +21,19 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+.dx-theme-material-typography h4 {
+    font-size: 20px !important;
+}
+.dx-theme-material-typography h3 {
+    font-size: 36px !important;
+}
+.dx-theme-material-typography h2 {
+    font-size: 41px !important;
+}
+.dx-theme-material-typography h1 {
+    font-size: 45px !important;
+}
+
+
+.rtl{direction: rtl; text-align: right;}

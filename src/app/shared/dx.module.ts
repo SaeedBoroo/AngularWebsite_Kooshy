@@ -1,7 +1,16 @@
 
 import { NgModule } from '@angular/core';
 import { 
-  DxButtonModule, DxTabsModule,
+    DxButtonModule,
+    DxTabsModule,
+    DxGalleryModule, 
+    DxTextBoxModule, 
+    DxToolbarModule, 
+    DxDrawerModule,
+    DxScrollViewModule,
+    DxListModule,
+    DxContextMenuModule,
+    DxTreeViewModule,
 
 } from 'devextreme-angular';
 
@@ -9,11 +18,27 @@ import {
 @NgModule({
   imports: [
     DxButtonModule,
-    DxTabsModule
+    DxTabsModule,
+    DxGalleryModule,
+    DxTextBoxModule,
+    DxToolbarModule,
+    DxDrawerModule,
+    DxScrollViewModule,
+    DxListModule,
+    DxContextMenuModule,
+    DxTreeViewModule
   ],
   exports: [
     DxButtonModule,
-    DxTabsModule
+    DxTabsModule,
+    DxGalleryModule,
+    DxTextBoxModule,
+    DxToolbarModule,
+    DxDrawerModule,
+    DxScrollViewModule,
+    DxListModule,
+    DxContextMenuModule,
+    DxTreeViewModule
   ]
 })
 export class DxModule {

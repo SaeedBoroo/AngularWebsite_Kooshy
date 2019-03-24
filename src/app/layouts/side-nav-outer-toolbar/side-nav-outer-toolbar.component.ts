@@ -1,10 +1,5 @@
 import { Component, OnInit, NgModule, Input } from '@angular/core';
-import { SideNavigationMenuModule, HeaderModule } from '../../shared/components';
 import { ScreenService } from '../../shared/services';
-import { DxDrawerModule } from 'devextreme-angular/ui/drawer';
-import { DxScrollViewModule } from 'devextreme-angular/ui/scroll-view';
-import { CommonModule } from '@angular/common';
-
 import { navigation } from '../../app-navigation';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -17,11 +12,10 @@ export class SideNavOuterToolbarComponent implements OnInit {
   menuItems = navigation;
   selectedRoute = '';
 
-  menuOpened: boolean;
+  menuOpened: boolean = false;
   temporaryMenuOpened = false;
 
-  @Input()
-  title: string;
+  @Input() title: string;
 
   menuMode = 'shrink';
   menuRevealMode = 'expand';
@@ -91,9 +85,3 @@ export class SideNavOuterToolbarComponent implements OnInit {
   }
 }
 
-@NgModule({
-  imports: [ SideNavigationMenuModule, DxDrawerModule, HeaderModule, DxScrollViewModule, CommonModule ],
-  exports: [ SideNavOuterToolbarComponent ],
-  declarations: [ SideNavOuterToolbarComponent ]
-})
-export class SideNavOuterToolbarModule { }

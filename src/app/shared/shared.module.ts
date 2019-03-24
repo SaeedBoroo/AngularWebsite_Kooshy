@@ -4,6 +4,11 @@ import { ModuleWithProviders, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { DxModule } from './dx.module';
+import { JobListComponent } from './components/job-list/job-list.component';
+import { JobDetailComponent } from './components/job-detail/job-detail.component';
+import { HomeComponent } from './components/home/home.component';
+import { ApiService } from './services/api-service.service';
+import { HeaderComponent, UserPanelComponent, SideNavigationMenuComponent } from './components';
 
 @NgModule({
   imports: [
@@ -18,25 +23,32 @@ import { DxModule } from './dx.module';
     // All components about to be loaded "dynamically" need to be declared in the entryComponents section.
   ],
   declarations: [
-    // common and shared components/directives/pipes between more than one module and components will be listed here.
+    JobListComponent,
+    JobDetailComponent,
+    HomeComponent,
+    HeaderComponent,
+    UserPanelComponent,
+    SideNavigationMenuComponent
   ],
+
   exports: [
-    // common and shared components/directives/pipes between more than one module and components will be listed here.
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
-    DxModule
+    DxModule,
+    UserPanelComponent,
+    HeaderComponent,
+    SideNavigationMenuComponent
   ]
-  /* No providers here! Since they’ll be already provided in AppModule. */
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     // Forcing the whole app to use the returned providers from the AppModule only.
     return {
       ngModule: SharedModule,
-      providers: [ /* All of your services here. */]
+      providers: [ ApiService ]
     };
   }
 }

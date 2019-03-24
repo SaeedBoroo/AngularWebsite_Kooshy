@@ -1,0 +1,19 @@
+
+::ng-deep .job_list__item{
+    padding: 10px !important;
+}
+::ng-deep .job_list__item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+::ng-deep .job_list__title h3{
+    font-size: 20px !important;
+}
+
+::ng-deep .job_list__voting {
+    position: absolute;
+    bottom: 0;
+    right: 7%;
+}

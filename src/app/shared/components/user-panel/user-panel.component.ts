@@ -1,8 +1,5 @@
-import { Component, NgModule, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
-import { DxListModule } from 'devextreme-angular/ui/list';
-import { DxContextMenuModule } from 'devextreme-angular/ui/context-menu';
 
 @Component({
   selector: 'app-user-panel',
@@ -20,13 +17,3 @@ export class UserPanelComponent {
   constructor() {}
 }
 
-@NgModule({
-  imports: [
-    DxListModule,
-    DxContextMenuModule,
-    CommonModule
-  ],
-  declarations: [ UserPanelComponent ],
-  exports: [ UserPanelComponent ]
-})
-export class UserPanelModule { }

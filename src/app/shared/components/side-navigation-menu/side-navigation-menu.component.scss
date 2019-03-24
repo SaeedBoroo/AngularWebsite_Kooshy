@@ -1,6 +1,12 @@
 @import "../../../../dx-styles.scss";
 @import "../../../../themes/generated/variables.additional.scss";
 
+
+::ng-deep .menu-container .dx-treeview .dx-treeview-node-container .dx-treeview-node.dx-state-selected > .dx-treeview-item * {
+  color: #F4CA50 !important;
+}
+
+
 :host {
   display: flex;
   flex-direction: column;

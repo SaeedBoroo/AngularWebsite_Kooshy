@@ -1,0 +1,31 @@
+@import "../../../../themes/colors.scss";
+
+::ng-deep .job_detail__title{
+    font-weight: 700 !important;
+    color: $cushy_blue;
+    padding: 0 20px 0 0;
+    word-spacing: 4px;
+}
+
+::ng-deep .job_detail__cats h3{
+    font-size: 25px !important;
+    color: $cushy_dark2;
+}
+::ng-deep .job_detail__cats img, .job_detail__info img {
+    margin: 0 0 12px 2%;
+}
+::ng-deep .job_detail__voting i{
+    color: $cushy_dark2;
+}
+::ng-deep .job_detail__info address, ::ng-deep .job_detail__info div {
+    margin: 0;
+    font-size: 20px;
+    font-kerning: normal;
+    word-spacing: 4px;
+}
+::ng-deep .job_detail__desc p{
+    color: $cushy_green;
+    font-size: 24px;
+    font-weight: 600;
+    word-spacing: 4px;
+}

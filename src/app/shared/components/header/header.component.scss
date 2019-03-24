@@ -10,6 +10,17 @@
     color: $base-accent;
   }
 }
+::ng-deep .dx-toolbar {
+  background-color: #4890EE;
+  color: rgba(255, 255, 255, 0.87);
+}
+::ng-deep .user-info .user-name {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+::ng-deep .dx-toolbar .dx-icon {
+  color: #fff !important;
+  font-size: 25px;
+}
 
 ::ng-deep .dx-toolbar.header-toolbar .dx-toolbar-items-container .dx-toolbar-after {
   padding: 0 40px;
@@ -38,4 +49,51 @@
   .user-button>.dx-button-content {
     padding: 3px;
   }
+}
+
+/*-------------*/
+
+::ng-deep .header__txtsearch{
+  width: 500px !important;
+  height: 50px !important;
+  @media screen and (max-width: 800px) {
+    width: 300px !important;
+    height: 50px !important;
+  }
+  @media screen and (max-width: 430px) {
+    width: 100% !important;
+    height: 50px !important;
+  }
+}
+::ng-deep .header__txtsearch .dx-texteditor-input {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 11px !important; 
+  transition: ease 0.25s;
+}
+::ng-deep .header__txtsearch.dx-state-focused {
+  background-color: rgba(255, 255, 255, 0.90);
+}
+::ng-deep .header__txtsearch.dx-state-focused .dx-placeholder, 
+::ng-deep .header__txtsearch.dx-state-focused.dx-show-clear-button .dx-texteditor-input {
+  color: rgba(0, 0, 0, 0.73) !important;
+}
+
+::ng-deep .header__txtsearch .dx-placeholder {
+  color: rgba(255, 255, 255, 0.73);
+  right: 0;
+  left: unset;
+  padding: 0 11px;
+}
+
+::ng-deep .header__txtsearch .dx-icon{
+  font-size: 17px;
+}
+::ng-deep .dx-texteditor.dx-editor-underlined.dx-show-clear-button .dx-texteditor-input {
+  text-align: right;
+  color: #fff;
+}
+::ng-deep .dx-texteditor.dx-editor-underlined .dx-texteditor-buttons-container {
+  left: 0;
+  right: unset;
+  margin: 0 5px;
 }
