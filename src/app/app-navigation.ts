@@ -10,6 +10,11 @@ export const navigation = [
     icon: 'rowfield'
   },
   {
+    text: 'دسته بندی ها',
+    path: '/category',
+    icon: 'folder'
+  },
+  {
     text: 'درباره ما',
     path: '/about-us',
     icon: 'info'

@@ -2,11 +2,9 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const url = "http://cushy.ir/"
+const url = "https://cushy.ir/"
 export const environment = {
     url: url,
     production: false,
-    hmr: false,
-    api_url: url + 'api',
-    
+    hmr: false,    
 }; 

@@ -9,11 +9,34 @@ import { ApiService } from '../../services/api-service.service';
 })
 export class JobListComponent implements OnInit {
 
-  constructor(private title:Title, private api: ApiService) {
-    this.title.setTitle('لیست مشاغل');
+  job_lists = []
+  id:number = 1
+  private sub
+
+  constructor(private title: Title, private apiServive: ApiService) {
+    this.title.setTitle('لیست مشاغل')
    }
 
   ngOnInit() {
+    debugger
+    this.sub = this.apiServive.getData('api/v1/job').subscribe(
+      (response:[])=>{
+        this.job_lists = response
+    });
   }
+
+  onClickPagesJobs(id:number){
+    this.sub = this.apiServive.getData('api/v1/job?page=' + id ).subscribe(
+      (response:[])=>{
+        this.job_lists = response
+    });
+  }
+
+
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
 
 }

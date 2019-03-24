@@ -1,0 +1,19 @@
+<div class="mt-4 px-lg-2 px-sm-2 rtl">
+  <h1>دسته بندی ها <sub>( {{ category.totalItems }} )</sub> </h1>
+  <div class="row">
+      <div *ngFor="let cat of category.list"
+           class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <div class="dx-card responsive-paddings mb-3 job_cat__items">
+              <div class="row">
+                <div class="col-12 text-center job_cat__title">
+                    <img src="../../../../assets/images/checked.png" alt="تصویر مشاغل کوشی" title="{{ cat.name }}" width="64" height="64">
+                    <a 
+                      [routerLink]="[ '/category2' ]"
+                      [queryParams]="{ parentId : cat.id }"
+                      ><h2> {{ cat.name }} </h2></a>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

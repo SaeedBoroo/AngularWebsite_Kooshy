@@ -13,7 +13,13 @@ export class ApiService extends Repository {
     }
 
     
-    public get(path, callback, params: any = null, onError = null) {
+    getData(path:string){
+        
+        var url = this.BaseURL + path;
+        return this.http.get(url)
+    }
+
+    public get(path, callback = null, params: any = null, onError = null) {
         debugger
         var url = this.BaseURL + path;
         var q = $params(params);
@@ -27,7 +33,7 @@ export class ApiService extends Repository {
 
         console.log("get=> " + url);
 
-        this.http.get(url)
+         this.http.get(url)
             .toPromise()
             .then(response => {
                 console.log(response);

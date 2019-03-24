@@ -5,7 +5,7 @@ import notify from 'devextreme/ui/notify';
 export class Repository {
 
     busyStack: Array<boolean> = new Array<boolean>();
-    public BaseURL: string = environment.api_url;
+    public BaseURL: string = environment.url;
 
     protected showNotify(message: string) {
         notify({

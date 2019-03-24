@@ -9,6 +9,8 @@ import { JobDetailComponent } from './components/job-detail/job-detail.component
 import { HomeComponent } from './components/home/home.component';
 import { ApiService } from './services/api-service.service';
 import { HeaderComponent, UserPanelComponent, SideNavigationMenuComponent } from './components';
+import { JobCategoryComponent } from './components/job-category/job-category.component';
+import { JobCategory2Component } from './components/job-category2/job-category2.component';
 
 @NgModule({
   imports: [
@@ -25,10 +27,13 @@ import { HeaderComponent, UserPanelComponent, SideNavigationMenuComponent } from
   declarations: [
     JobListComponent,
     JobDetailComponent,
+    JobCategoryComponent,
     HomeComponent,
     HeaderComponent,
     UserPanelComponent,
-    SideNavigationMenuComponent
+    SideNavigationMenuComponent,
+    JobCategory2Component,
+    
   ],
 
   exports: [

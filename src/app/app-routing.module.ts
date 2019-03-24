@@ -12,6 +12,8 @@ import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { JobListComponent } from './shared/components/job-list/job-list.component';
 import { JobDetailComponent } from './shared/components/job-detail/job-detail.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { JobCategoryComponent } from './shared/components/job-category/job-category.component';
+import { JobCategory2Component } from './shared/components/job-category2/job-category2.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
         { path: 'home',component: HomeComponent, canActivate: [ AuthGuardService ]},
         { path: 'job-list', component: JobListComponent },
         { path: 'job-detail', component: JobDetailComponent },
+        { path: 'category', component: JobCategoryComponent },
+        { path: 'category2', component: JobCategory2Component },
         { path: 'about-us', component: AboutUsComponent },
         { path: 'display-data',component: DisplayDataComponent,canActivate: [ AuthGuardService ]},
         { path: 'profile',component: ProfileComponent,canActivate: [ AuthGuardService ]},

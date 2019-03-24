@@ -1,0 +1,13 @@
+::ng-deep .job_cat__title h2{
+    font-size: 20px !important
+}
+::ng-deep .job_cat__items{
+    padding: 40px 7px 25px 7px !important;
+}
+::ng-deep .job_cat__back a{
+    cursor: pointer;
+    i{
+        margin: 0 0 0 20px;
+        font-size: 35px;
+    }
+}

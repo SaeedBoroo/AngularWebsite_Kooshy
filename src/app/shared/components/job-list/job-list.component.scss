@@ -8,12 +8,29 @@
     border-radius: 5px;
 }
 
-::ng-deep .job_list__title h3{
+::ng-deep .job_list__title{
+    padding: 0 0 0 8px;
+
+    h3{
     font-size: 20px !important;
+}
 }
 
 ::ng-deep .job_list__voting {
     position: absolute;
     bottom: 0;
     right: 7%;
+}
+::ng-deep .job_list__back {
+    dx-button{
+        cursor: pointer !important;
+        i{
+            margin: 0 0 0 20px;
+            font-size: 35px;
+        }
+    }
+    span{
+        padding: 0 20px 0 20px;
+        font-size: 20px;
+    }
 }
