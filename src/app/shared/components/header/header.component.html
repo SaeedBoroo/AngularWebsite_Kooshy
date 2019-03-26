@@ -52,10 +52,14 @@
                         <dx-text-box
                             class="header__txtsearch"
                             [showClearButton]="true"
-
+                            [(ngModel)]="query_search"
                             placeholder="هرچه میخواهی را جستجو کن"
                             valueChangeEvent="keyup"
-                            ></dx-text-box>
+                            >
+                        </dx-text-box>
+                        <dx-button class="header__btnsearch" [stylingMode]="text" [type]="normal" (onClick)="onClickSearch(query_search)">
+                                <i class="dx-icon dx-icon-search"></i>
+                            </dx-button>
                 </dxi-item>
             </div>
         </div>

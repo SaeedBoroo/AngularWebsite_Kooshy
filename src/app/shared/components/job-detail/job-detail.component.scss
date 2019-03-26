@@ -1,5 +1,17 @@
 @import "../../../../themes/colors.scss";
 
+:host-context(.screen-x-small) .job_detail__slider {
+    dx-gallery{
+      width: 100% !important;
+      height: 200px !important;
+    }
+}
+::ng-deep .job_detail__slider {
+    margin: 0 0 30px 0;
+    img{
+        border-radius: 8px;
+    }
+}
 ::ng-deep .job_detail__title{
     font-weight: 700 !important;
     color: $cushy_blue;
@@ -28,4 +40,15 @@
     font-size: 24px;
     font-weight: 600;
     word-spacing: 4px;
+}
+::ng-deep .job_detail__back {
+    dx-button{
+        cursor: pointer !important;
+        margin: 0 0 0 14px;
+        i{
+            margin: 0 0 0 20px;
+            font-size: 35px;
+            color: $cushy_green !important
+        }
+    }
 }

@@ -1,47 +1,60 @@
 <div class="mt-4 px-lg-2 px-sm-2 rtl">
-    <h2 class="job_detail__title">کاربراتوری استاد رشید</h2>
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-9"><h1 class="job_detail__title">  {{ job_detail.name }} </h1></div>
+        <div class="col-xs-12 col-sm-5 col-md-3 text-right job_detail__back">
+          <dx-button 
+              [routerLink]="[ '/job-list' ]" >
+              <i class="dx-icon dx-icon-arrowleft"></i></dx-button>
+        </div>
+      </div>
     <div class="row">
         <div class="col-12">
               <div class="dx-card responsive-paddings mb-3 job_detail__item">
-                  <div class="job_detail__slider col-6 offset-4">
+                  <div class="job_detail__slider">
                       <dx-gallery
-                          [dataSource]="galleryDataSource"
-                          [height]="300"
-                          [width]="400"
+                          [dataSource]="galleryJobDetail"
+                          [slideshowDelay]="3000"
+                          [animationDuration]="500"
+                          [height]="500"
+                          width="100%"
                           [loop]="true"
+                          [swipeEnabled]="true"
+                          [stretchImages]="true"
                           [showNavButtons]="true"
                           [showIndicator]="true">
+                          <div *dxTemplate="let Item of 'item'">
+                              <div>
+                                <img src="http://cushy.ir{{ Item }}" alt="{{ job_detail.name }}" />
+                              </div>
+                          </div>
                       </dx-gallery>
                   </div>
                   <div class="job_detail__cats">
-                    <h3><img src="../../../../assets/images/cushy-administrator-male-64.png" alt="آیکن کوشی" width="32" height="32"/> استاد رشید قنبری</h3>
-                    <h3><img src="../../../../assets/images/cushy-opened-folder-64.png" alt="آیکن کوشی" width="32" height="32"/> کاربراتوری (تنظیم سوخت و جرقه)</h3>
+                    <h3><img src="../../../../assets/images/cushy-administrator-male-64.png" alt="آیکن کوشی" width="32" height="32"/> {{ job_detail.firstName }}&nbsp;{{ job_detail.lastName }}</h3>
+                    <h3><img src="../../../../assets/images/cushy-opened-folder-64.png" alt="آیکن کوشی" width="32" height="32"/> {{ job_detail.category }}</h3>
                     <div class="job_detail__voting">
-                        <i class="dx-icon dx-icon-favorites"></i>
-                        <i class="dx-icon dx-icon-favorites"></i>
-                        <i class="dx-icon dx-icon-favorites"></i>
-                        <i class="dx-icon dx-icon-favorites"></i>
-                        <i class="dx-icon dx-icon-favorites"></i>
+                        <i  *ngFor="let item of job_detail.rate"
+                            class="dx-icon dx-icon-favorites"></i>
                      </div>
                   </div>
               </div>
               <div class="job_detail__info dx-card responsive-paddings mb-3">
-                <address><img src="../../../../assets/images/cushy-home-64.png" alt="آیکن کوشی" width="32" height="32"> بلوار نیکبخت - بعد از سشیشسیش شس یسی </address>
-                <div><img src="../../../../assets/images/cushy-cell-phone-64.png" alt="آیکن کوشی" width="32" height="32"> 0913523652</div>
-                <div><img src="../../../../assets/images/cushy-phone-64.png" alt="آیکن کوشی" width="32" height="32"> 0913987652</div>
+                <address><img src="../../../../assets/images/cushy-home-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.address }} </address>
+                <div><img src="../../../../assets/images/cushy-cell-phone-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.mobile }}</div>
+                <div><img src="../../../../assets/images/cushy-phone-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.phone }}</div>
               </div>
               <div class="job_detail__info dx-card responsive-paddings mb-3">
-                  <div> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"> Telegram</div>
-                   <div> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"> grop</div>
-                   <div><img src="../../../../assets/images/cushy-instagram-64.png" alt="آیکن کوشی" width="32" height="32"> instagram</div>
-                   <div><img src="../../../../assets/images/cushy-twitter-64.png" alt="آیکن کوشی" width="32" height="32"> twitter</div>
-                   <div><img src="../../../../assets/images/cushy-website-64.png" alt="آیکن کوشی" width="32" height="32"> website</div>
-                  <div> <img src="../../../../assets/images/cushy-gmail-64.png" alt="آیکن کوشی" width="32" height="32"> email</div>
+                  <div> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.telegramChannel }}</div>
+                   <div> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.telegramGroup }}</div>
+                   <div><img src="../../../../assets/images/cushy-instagram-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.instagram }}</div>
+                   <div><img src="../../../../assets/images/cushy-twitter-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.twitter }}</div>
+                   <div><img src="../../../../assets/images/cushy-website-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.website }}</div>
+                  <div> <img src="../../../../assets/images/cushy-gmail-64.png" alt="آیکن کوشی" width="32" height="32"> {{ job_detail.mail }}</div>
                 </div>
 
                 <div class="job_detail__desc dx-card responsive-paddings mb-3">
                   <p>
-                    توضیحاتی در مورد این شغل
+                    {{ job_detail.description }}
                   </p>
                 </div>
         </div>

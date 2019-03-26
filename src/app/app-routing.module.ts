@@ -14,6 +14,7 @@ import { JobDetailComponent } from './shared/components/job-detail/job-detail.co
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { JobCategoryComponent } from './shared/components/job-category/job-category.component';
 import { JobCategory2Component } from './shared/components/job-category2/job-category2.component';
+import { JobSearchComponent } from './shared/components/job-search/job-search.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,8 @@ const routes: Routes = [
         { path: 'home',component: HomeComponent, canActivate: [ AuthGuardService ]},
         { path: 'job-list', component: JobListComponent },
         { path: 'job-detail', component: JobDetailComponent },
+        { path: 'job-detail/:id', component: JobDetailComponent },
+        { path: 'search', component: JobSearchComponent },
         { path: 'category', component: JobCategoryComponent },
         { path: 'category2', component: JobCategory2Component },
         { path: 'about-us', component: AboutUsComponent },

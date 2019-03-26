@@ -11,6 +11,8 @@ import { ApiService } from './services/api-service.service';
 import { HeaderComponent, UserPanelComponent, SideNavigationMenuComponent } from './components';
 import { JobCategoryComponent } from './components/job-category/job-category.component';
 import { JobCategory2Component } from './components/job-category2/job-category2.component';
+import { DataTransferService } from './services';
+import { JobSearchComponent } from './components/job-search/job-search.component';
 
 @NgModule({
   imports: [
@@ -33,6 +35,7 @@ import { JobCategory2Component } from './components/job-category2/job-category2.
     UserPanelComponent,
     SideNavigationMenuComponent,
     JobCategory2Component,
+    JobSearchComponent
     
   ],
 
@@ -53,7 +56,7 @@ export class SharedModule {
     // Forcing the whole app to use the returned providers from the AppModule only.
     return {
       ngModule: SharedModule,
-      providers: [ ApiService ]
+      providers: [ ApiService, DataTransferService ]
     };
   }
 }

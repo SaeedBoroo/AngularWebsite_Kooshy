@@ -17,12 +17,13 @@ export class JobCategoryComponent implements OnInit {
    }
 
   ngOnInit() {
-    debugger
+    
     this.sub = this.apiServive.getData('api/v1/category').subscribe(
       (response)=>{
         this.category = response
         
     });
+
   }
 
   ngOnDestroy() {

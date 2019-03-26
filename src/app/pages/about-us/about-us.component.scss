@@ -1,0 +1,85 @@
+@import "../../../themes/colors.scss";
+
+::ng-deep .cushy_about__facilities {
+    padding: 40px 0;
+    transition: ease-in 0.25s;
+    h3{
+        font-weight: 700;
+    }
+    .about_facilities__item h2{
+        padding: 20px 0 0 0;
+        font-size: 20px !important;
+    }
+    .row > div{
+        padding: 25px 25px;
+        background-color: #f7f7f7;
+        border: 6px solid #fff !important;
+        border-radius: 17px;
+    }
+    .row > div:hover{
+        background-color: $cushy_yellow;
+        transition: ease-in 0.25s;
+    }
+}
+
+::ng-deep .cushy_about__bio{
+
+    .cushy_about__logo {
+        margin: 27px 0 0 0;
+    }
+    .cushy_about__logo img{
+        -webkit-animation: rotating 90s linear infinite;
+        animation: rotating 90s linear infinite;
+        border: 1px solid #eee;
+        border-radius: 100px;
+        padding: 5px;
+    }
+
+}
+
+::ng-deep .cushy_about__contact {
+    margin: 14px 0 0 0;
+    h3{
+        font-weight: 700;
+    }
+    .cushy_contact__phone {
+        font-size: 20px;
+        line-height: 40px;
+        address{
+            margin: 0;
+        }
+    }
+    .cushy_contact__social {
+        margin: 25px 0 0 0;
+        a {
+            margin: 0 5%;
+        }
+    }
+}
+
+
+/*-*/
+@-webkit-keyframes rotating {
+    from {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    to {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes rotating {
+    from {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    to {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }

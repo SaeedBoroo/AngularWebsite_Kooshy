@@ -16,39 +16,38 @@ export class ApiService extends Repository {
     getData(path:string){
         
         var url = this.BaseURL + path;
+        console.log("GET >> " + url);
         return this.http.get(url)
     }
 
-    public get(path, callback = null, params: any = null, onError = null) {
+     get(path:string, callback, params: any = null) {
         debugger
         var url = this.BaseURL + path;
-        var q = $params(params);
 
-        if (q != "") {
-            if (url.indexOf("?") > 0)
-                url = url + "&" + q;
-            else
-                url = url + "?" + q;
-        }
+        // var q = $params(params);
+        // if (q != "") {
+        //     if (url.indexOf("?") > 0)
+        //         url = url + "&" + q;
+        //     else
+        //         url = url + "?" + q;
+        // }
 
         console.log("get=> " + url);
 
-         this.http.get(url)
+         return this.http.get(url)
             .toPromise()
             .then(response => {
-                console.log(response);
-                if (response != '')
+                if (response != ''){
+                    console.log('Response GET >>> '+response);
                     callback(response);
+                }
                 else {
                     let message = '!!! Network Error !!!';
                     this.showNotify(message);
-                    console.log(message);
-                    if (onError != null) {
-                        onError();
-                    }
+                    console.log('Error GET >>> '+message);
                 }
             }).catch(err => {
-                this.showNotify(err.message);
+                this.showNotify('Catch GET >>> '+err.message);
             });
     }
     

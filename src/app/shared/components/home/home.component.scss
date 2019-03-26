@@ -32,3 +32,62 @@
     }
   }
 }
+
+/*-------SAeeD------*/
+.home_head__title{
+  margin: 30px 0 0 0;
+  padding: 0 10px;
+  font-weight: 700;
+}
+:host-context(.screen-x-small) .home_slider__item {
+  dx-gallery{
+    width: 100% !important;
+  }
+}
+.home_slider__item dx-gallery{ 
+  direction: ltr !important;
+  margin: 0 auto;
+}
+.home_slider__img{
+   width: 100%;
+   border-radius: 7px;
+  }
+::ng-deep .home_top__carousel{
+  .dx-gallery-item{
+    margin-left: 2.2805% !important;
+  }
+  dx-gallery{ 
+    direction: ltr !important;
+  }
+  .home_caroucel__title{
+    font-size: 22px !important;
+    padding: 10px 4px 0 4px;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow: ellipsis;
+  }
+}
+
+::ng-deep .home_new__carousel{
+  .dx-gallery-item{
+    margin-left: 2.2805% !important;
+  }
+  dx-gallery{ 
+    direction: ltr !important;
+  }
+  .home_caroucel__title{
+    font-size: 22px !important;
+    padding: 10px 4px 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 99%;
+    direction: rtl;
+    text-align: center;
+  }
+  :host-context(.screen-x-small) .home_caroucel__title{
+    font-size: 17px !important;
+  }
+}
+
+

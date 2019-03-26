@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ApiService } from '../../services';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-job-detail',
@@ -8,16 +10,34 @@ import { Title } from '@angular/platform-browser';
 })
 export class JobDetailComponent implements OnInit {
 
-  galleryDataSource = [
-    "assets/images/medium-cushy@1x.jpg",
-    "https://js.devexpress.com/Content/images/doc/18_2/PhoneJS/person3.png"
-];
+  job_detail = []
+  sub
+  id: number
+  galleryJobDetail: string[]
 
-  constructor(private title:Title) {
+
+  constructor(private title:Title,
+     private apiServive: ApiService,
+     private route: ActivatedRoute     ) {
     this.title.setTitle('جزئیات هر شغل');
    }
 
   ngOnInit() {
+debugger
+    this.id = +this.route.snapshot.params['id'];
+
+    this.route.params.subscribe(
+      (params: Params)=>{
+        this.id = +params['id']
+      });
+
+    console.log('ID>>' + this.id)
+
+    this.sub = this.apiServive.getData('api/v1/job/' + this.id ).subscribe(
+      (resp:[])=>{
+        this.job_detail = resp;
+        this.galleryJobDetail = resp['pics'];
+      });
   }
 
 }

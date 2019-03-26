@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services/api-service.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,12 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JobCategory2Component implements OnInit {
   
-  category
+  subCategory
+  subCatTitle
   private sub
   private sub2
   parentId
 
-  constructor(private title: Title, private apiServive: ApiService, private route: ActivatedRoute) {
+
+  constructor(private title: Title,
+    private apiServive: ApiService, 
+    private route: ActivatedRoute) 
+    {
     this.title.setTitle('زیر دسته بندی مشاغل')
    }
 
@@ -27,9 +32,11 @@ export class JobCategory2Component implements OnInit {
 
     this.sub2 = this.apiServive.getData('api/v1/category?parentId=' + this.parentId).subscribe(
       (response)=>{
-        this.category = response
+        this.subCategory = response
         
     });
+
+    
   }
 
   ngOnDestroy() {

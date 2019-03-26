@@ -1,25 +1,75 @@
-<div class="mt-4 px-lg-2 px-sm-2 rtl">
-          <div class="row">
+<div class="mt-4 px-lg-2 px-sm-2 rtl" >
+      <div class="row">
               <div class="col-12">
-                    <div class="dx-card responsive-paddings mb-3 job_detail__item">
-                        <div class="job_detail__slider col-6 offset-4">
-                            <dx-gallery
-                                [dataSource]="gallerySource"
-                                [height]="300"
-                                [width]="400"
+                    <div class="dx-card responsive-paddings mb-3 home_slider__item">
+                        <div class="text-center">
+                            <dx-gallery #slider
+                                [dataSource]="sliderSource"
+                                [slideshowDelay]="3500"
+                                [animationDuration]="700"
+                                height="100%"
+                                [width]="600"
                                 [loop]="true"
+                                [swipeEnabled]="true"
                                 [showNavButtons]="true"
                                 [showIndicator]="true">
+                                  <div *dxTemplate="let sliderItem of 'item'">
+                                      <div>
+                                        <img class="home_slider__img" src="{{ sliderItem.img }}" alt="{{ sliderItem.alt }}" title="{{ sliderItem.alt }}"/>
+                                        <h3 class="home_slider__title">{{ sliderItem.alt }}</h3>
+                                      </div>
+                                  </div>
                             </dx-gallery>
-                        </div>
+                          </div>
+                     </div>   
+                     
+                     <h3 class="home_head__title">برترین ها</h3>
+                     <div class="home_top__carousel dx-card responsive-paddings mb-3">
+                          <dx-gallery #top_caroucel
+                                [dataSource]="jobTopCaroucel"
+                                height="100%"
+                                width="100%"
+                                [loop]="false"
+                                [swipeEnabled]="true"
+                                [showNavButtons]="true"
+                                [showIndicator]="false"
+                                [initialItemWidth]="250"
+                                [stretchImages]="false"
+                                [wrapAround]="false">
+                              <div *dxTemplate="let topItem of 'item'">
+                                  <a [routerLink]="[ '/job-detail', topItem.id ]">
+                                    <img class="home_slider__img" src="http://cushy.ir/images/job/{{ topItem.picId }}.jpg" alt="{{ topItem.name }}" title="{{ topItem.name }}"/>
+                                    <h3 class="home_caroucel__title">{{ topItem.name }}</h3>
+                                  </a>
+                              </div>
+                       </dx-gallery>
                     </div>
 
-      
-                      <div class="job_detail__desc dx-card responsive-paddings mb-3">
-                        <p>
-                          توضیحاتی در مورد این شغل
-                        </p>
-                      </div>
+
+                    <h3 class="home_head__title"> جدیدترین ها </h3>
+                    <div class="home_new__carousel dx-card responsive-paddings mb-3">
+                         <dx-gallery #new_caroucel
+                               [dataSource]="jobNewCaroucel"
+                               height="100%"
+                               width="100%"
+                               [loop]="false"
+                               [swipeEnabled]="true"
+                               [showNavButtons]="true"
+                               [showIndicator]="false"
+                               [initialItemWidth]="250"
+                               [stretchImages]="false"
+                               [wrapAround]="false">
+                             <div *dxTemplate="let newItem of 'item'">
+                                <a [routerLink]="[ '/job-detail', newItem.id ]">
+                                  <img class="home_slider__img" src="http://cushy.ir/images/job/{{ newItem.picId }}.jpg" alt="{{ newItem.name }}" title="{{ newItem.name }}"/>
+                                  <h3 class="home_caroucel__title">{{ newItem.name }}</h3>
+                                </a>
+                             </div>
+                      </dx-gallery>
+                   </div>
               </div>
-          </div>
+
+      
+                      
       </div>
+</div>
