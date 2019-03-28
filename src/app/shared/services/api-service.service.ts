@@ -1,11 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Repository } from './Repository';
+import { Observable } from 'rxjs';
+import { jobTop_Interface } from '../components/home/job-top.interface';
+import { HttpClient } from '@angular/common/http';
+import { jobNew_Interface } from '../components/home/job-new.interface';
+import { Slider_Interface } from '../components/home/slider.interface';
 
 declare function $params(obj: any): string;
 
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ApiService extends Repository {
     
     constructor(private http: HttpClient){
@@ -19,6 +23,25 @@ export class ApiService extends Repository {
         console.log("GET >> " + url);
         return this.http.get(url)
     }
+
+  /** GET jobTop for Home component  **/
+    getJobTop (): Observable<jobTop_Interface[]> {
+        return this.http.get<jobTop_Interface[]>(this.BaseURL + 'api/v1/JobTop');
+    }
+
+    /** GET job for Home component **/
+    getJobNew (): Observable<jobNew_Interface[]> {
+        return this.http.get<jobNew_Interface[]>(this.BaseURL + 'api/v1/Job');
+    }
+
+    /** GET Slider for Home component **/
+    getSlider (): Observable<Slider_Interface[]> {
+        return this.http.get<Slider_Interface[]>(this.BaseURL + 'api/v1/Slider');
+    }
+
+
+
+
 
      get(path:string, callback, params: any = null) {
         debugger

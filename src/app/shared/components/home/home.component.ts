@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services';
+import { jobTop_Interface } from './job-top.interface';
+import { Slider_Interface } from './slider.interface';
+import { jobNew_Interface } from './job-new.interface';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -9,33 +12,42 @@ import { ApiService } from '../../services';
 
 export class HomeComponent implements OnInit,OnDestroy{
 
-  sliderSource: string[]
-  jobTopCaroucel
-  jobNewCaroucel
-  sub
+  sliderSource: Slider_Interface[]
+  jobTopCaroucel: jobTop_Interface[]
+  jobNewCaroucel: jobNew_Interface[]
+  
 
-  constructor(private title:Title, private apiService: ApiService) {
+  constructor(private title:Title, private apiService: ApiService) {}
+
+  ngOnInit(){
+
     this.title.setTitle('اپلیکیشن کوشی | یافتن تمامی مشاغل و اصناف شهر');
+
+    this.getJobTop();
+    this.getJobNew();
+    this.getSlider();
+
    }
 
-   ngOnInit(){
-     this.sub = this.apiService.getData('api/v1/Slider').subscribe(
-       (response: string[])=>{
-         this.sliderSource = response
-       });
 
-    this.sub = this.apiService.getData('api/v1/JobTop').subscribe(
-    (response)=>{
-      this.jobTopCaroucel = response['list'];
-    });
+  getJobTop(): void {
+    this.apiService.getJobTop().subscribe(
+      response => this.jobTopCaroucel = response);
 
-    this.sub = this.apiService.getData('api/v1/job').subscribe(
-      (response)=>{
-        this.jobNewCaroucel = response['list']
-      });
+   }
+  getJobNew(): void {
+    this.apiService.getJobNew().subscribe(
+      response => this.jobNewCaroucel = response);
+
+   }
+  getSlider(): void {
+    this.apiService.getSlider().subscribe(
+      response => this.sliderSource = response);
+
    }
 
-   ngOnDestroy(){
-    this.sub.unsubscribe();
+
+  ngOnDestroy(){
+    // this.sub.unsubscribe();
    }
 }
