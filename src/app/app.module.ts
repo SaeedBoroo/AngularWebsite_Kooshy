@@ -10,7 +10,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { ContentLayoutComponent } from './layouts/content-layout/content-layout.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import {  SingleCardModule, SideNavOuterToolbarComponent, SideNavInnerToolbarComponent } from './layouts';
-import {  LoginFormModule } from './shared/components';
+import {  LoginFormModule, HomeComponent } from './shared/components';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 
@@ -24,6 +24,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
     AboutUsComponent,
     SideNavOuterToolbarComponent,
     SideNavInnerToolbarComponent,
+    HomeComponent
 
   ],
   imports: [

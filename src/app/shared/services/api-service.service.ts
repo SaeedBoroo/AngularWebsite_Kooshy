@@ -1,10 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { Repository } from './Repository';
-import { Observable } from 'rxjs';
-import { jobTop_Interface } from '../components/home/job-top.interface';
+import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { jobNew_Interface } from '../components/home/job-new.interface';
-import { Slider_Interface } from '../components/home/slider.interface';
+import { job_Interface } from '../interfaces/job.interface';
+import { Slider_Interface } from '../interfaces/slider.interface';
+import { CategoryInterface } from '../interfaces/category.interface';
+import { JobDetail_Interface } from '../interfaces/job-detail.interface';
 
 declare function $params(obj: any): string;
 
@@ -24,19 +25,65 @@ export class ApiService extends Repository {
         return this.http.get(url)
     }
 
-  /** GET jobTop for Home component  **/
-    getJobTop (): Observable<jobTop_Interface[]> {
-        return this.http.get<jobTop_Interface[]>(this.BaseURL + 'api/v1/JobTop');
+    /** GET jobTop for Home component  **/
+    getJobTop (): Observable<job_Interface[]> {
+        return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/JobTop');
     }
 
     /** GET job for Home component **/
-    getJobNew (): Observable<jobNew_Interface[]> {
-        return this.http.get<jobNew_Interface[]>(this.BaseURL + 'api/v1/Job');
+    getJobNew (): Observable<job_Interface[]> {
+        return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/Job');
     }
 
     /** GET Slider for Home component **/
     getSlider (): Observable<Slider_Interface[]> {
         return this.http.get<Slider_Interface[]>(this.BaseURL + 'api/v1/Slider');
+    }
+
+    /** GET Category for Home component **/
+    getCategory (): Observable<CategoryInterface[]> {
+        return this.http.get<CategoryInterface[]>(this.BaseURL + 'api/v1/category');
+    }
+
+    /** GET Sub_Category for Home component **/
+    getSubCategory ( subCatId: number ): Observable<CategoryInterface[]> {
+        if(subCatId == null)
+            { return of([]); }
+        else{
+            return this.http.get<CategoryInterface[]>(this.BaseURL + 'api/v1/category?parentId=' + subCatId);
+        }
+    }
+
+    /** GET Job_List for Home component **/
+    getJobList (): Observable<job_Interface[]> {
+        return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job?page=' + 1);
+    }
+
+    /** GET Job_List__Pagination for Home component **/
+    getJobListPagination ( pageId: number ): Observable<job_Interface[]> {
+        if( pageId == null)
+            { return of([]); }
+        else{
+            return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job?page=' + pageId);
+        }
+    }
+
+    /** GET Job_Details for Home component **/
+    getJobDetails ( paramId: number ): Observable<JobDetail_Interface[]> {
+        if( paramId == null)
+            { return of([]); }
+        else{
+            return this.http.get<JobDetail_Interface[]>(this.BaseURL + 'api/v1/job/' + paramId);
+        }
+    }
+
+    /* GET Search Box */
+    getSearch( term: string ): Observable<job_Interface[]> {
+        if (!term.trim()) 
+        {   return of([]);}
+        else{
+            return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job?name=' + term);
+        }
     }
 
 

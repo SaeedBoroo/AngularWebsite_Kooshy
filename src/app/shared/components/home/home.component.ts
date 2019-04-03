@@ -1,23 +1,22 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services';
-import { jobTop_Interface } from './job-top.interface';
-import { Slider_Interface } from './slider.interface';
-import { jobNew_Interface } from './job-new.interface';
+import { Slider_Interface } from '../../interfaces/slider.interface';
+import { job_Interface } from '../../interfaces/job.interface';
 
 @Component({
   templateUrl: 'home.component.html',
   styleUrls: [ './home.component.scss' ]
 })
 
-export class HomeComponent implements OnInit,OnDestroy{
+export class HomeComponent implements OnInit,OnDestroy  {
 
-  sliderSource: Slider_Interface[]
-  jobTopCaroucel: jobTop_Interface[]
-  jobNewCaroucel: jobNew_Interface[]
+  sliderSource: Slider_Interface[] 
+  jobTopCaroucel: job_Interface[]
+  jobNewCaroucel: job_Interface[]
   
 
-  constructor(private title:Title, private apiService: ApiService) {}
+  constructor(private title:Title, private apiService: ApiService) { }
 
   ngOnInit(){
 
@@ -26,6 +25,9 @@ export class HomeComponent implements OnInit,OnDestroy{
     this.getJobTop();
     this.getJobNew();
     this.getSlider();
+
+    var aa = new Slider_Interface ;
+    console.log('IMG >>> ' , aa.img )
 
    }
 

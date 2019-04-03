@@ -50,16 +50,28 @@
                     location="center"
                     cssClass="header-title">
                         <dx-text-box
+                            #searchBox
                             class="header__txtsearch"
                             [showClearButton]="true"
-                            [(ngModel)]="query_search"
-                            placeholder="هرچه میخواهی را جستجو کن"
-                            valueChangeEvent="keyup"
+                            (keyup.enter)="search(searchBox.value)"
+                            (blur)=" onClickShowDetail() "
+                            placeholder="هرچه میخواهی را جستجو کن + دکمه اینتر را بزنید"
+                            
                             >
                         </dx-text-box>
-                        <dx-button class="header__btnsearch" [stylingMode]="text" [type]="normal" (onClick)="onClickSearch(query_search)">
+
+                        <ul class="search-result">
+                            <li *ngFor="let resultItem of searchResult " >
+                              <a routerLink="/job-detail/{{ resultItem.id }}"
+                                 (click)="onClickShowDetail()">
+                                {{ resultItem.name }}
+                              </a>
+                            </li>
+                        </ul>
+
+                        <!-- <dx-button class="header__btnsearch" [stylingMode]="text" [type]="normal" (onClick)="onClickSearch(query_search)">
                                 <i class="dx-icon dx-icon-search"></i>
-                            </dx-button>
+                            </dx-button> -->
                 </dxi-item>
             </div>
         </div>

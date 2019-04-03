@@ -1,43 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { JobDetail_Interface } from '../../interfaces/job-detail.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-job-detail',
   templateUrl: './job-detail.component.html',
   styleUrls: ['./job-detail.component.scss']
 })
-export class JobDetailComponent implements OnInit {
+export class JobDetailComponent implements OnInit,OnDestroy {
 
-  job_detail = []
-  sub
-  id: number
-  galleryJobDetail: string[]
+  private jobDetail: JobDetail_Interface[]
+  private subscribtion: Subscription
+  private paramId: number
+  private galleryJobDetail: string[]
+  private nameJobDetail: string
 
 
-  constructor(private title:Title,
-     private apiServive: ApiService,
-     private route: ActivatedRoute     ) {
-    this.title.setTitle('جزئیات هر شغل');
-   }
+  constructor(private title:Title, private apiServive: ApiService, private AvtiveRoute: ActivatedRoute , private router:Router) {
+    }
 
   ngOnInit() {
-debugger
-    this.id = +this.route.snapshot.params['id'];
 
-    this.route.params.subscribe(
+    this.paramId = +this.AvtiveRoute.snapshot.params['id']; //just change URL.
+    this.subscribtion = this.AvtiveRoute.params.subscribe( //Change data 
       (params: Params)=>{
-        this.id = +params['id']
+        this.paramId = +params['id']
       });
 
-    console.log('ID>>' + this.id)
+    this.getJobDetails( this.paramId );
+  }
 
-    this.sub = this.apiServive.getData('api/v1/job/' + this.id ).subscribe(
-      (resp:[])=>{
-        this.job_detail = resp;
-        this.galleryJobDetail = resp['pics'];
+getJobDetails( paramId:number ){
+  this.subscribtion = this.apiServive.getJobDetails( paramId ).subscribe(
+    (response)=>{
+      this.jobDetail = response;
+      this.galleryJobDetail = response['pics'];
+      this.nameJobDetail = response['name'];
+      this.title.setTitle( this.nameJobDetail );
+    });
+}
+
+  onClickBackToJobList(){
+    this.router.navigate(
+      ['/job-list'], 
+      {
+        relativeTo: this.AvtiveRoute,
       });
   }
 
+
+  ngOnDestroy(): void {
+    this.subscribtion.unsubscribe();
+  }
 }

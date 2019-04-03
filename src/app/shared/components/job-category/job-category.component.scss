@@ -1,6 +1,28 @@
-::ng-deep .job_cat__title h2{
-    font-size: 20px !important
+@import "../../../../themes/colors.scss";
+
+::ng-deep .job_cat__title{
+    h2{
+        font-size: 20px !important
+    }
+    a {
+        cursor: pointer;
+        color: $cushy_blue !important;
+    }
 }
 ::ng-deep .job_cat__items{
     padding: 40px 7px 25px 7px !important;
+    transition: ease 0.25s;
+}
+.job_cat__items:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.20), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+    background-color: rgba(244, 202, 80, 0.3)
+}
+::ng-deep .job_cat__back dx-button{
+    cursor: pointer;
+    margin: 0 0 0 15px;
+    i{
+        margin: 0 0 0 20px;
+        font-size: 35px;
+        color: $cushy_green !important;
+    }
 }

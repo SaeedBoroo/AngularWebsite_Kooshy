@@ -58,6 +58,7 @@
 ::ng-deep .header__txtsearch{
   width: 500px !important;
   height: 50px !important;
+  margin: 13px 0 0 0;
   @media screen and (max-width: 800px) {
     width: 300px !important;
     height: 50px !important;
@@ -113,4 +114,41 @@
   :hover, :active, :focus{
     background-color: $cushy_green !important;
   }
+}
+
+/*---Search-Box---*/
+.search-result li {
+  border-bottom: 1px solid #f1f1f1;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  padding: 5px;
+  background-color: white;
+  cursor: pointer;
+  list-style-type: none;
+}
+.search-result li:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.search-result li:hover {
+  background-color: $cushy_yellow;
+  color: white;
+}
+
+.search-result li a {
+  color: $cushy_green;
+  display: block;
+  text-decoration: none;
+}
+
+.search-result li a:hover {
+  color: $cushy_blue;
+}
+.search-result li a:active {
+  color: $cushy_blue;
+}
+
+ul.search-result {
+  margin-top: 0;
+  padding-left: 0;
 }
