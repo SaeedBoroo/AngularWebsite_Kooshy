@@ -26,8 +26,7 @@ export class HomeComponent implements OnInit,OnDestroy  {
     this.getJobNew();
     this.getSlider();
 
-    var aa = new Slider_Interface ;
-    console.log('IMG >>> ' , aa.img )
+
 
    }
 

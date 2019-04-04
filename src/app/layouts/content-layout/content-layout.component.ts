@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { slideInAnimation } from 'src/app/shared/services/animations';
 
 @Component({
   selector: 'app-content-layout',
@@ -11,5 +13,7 @@ export class ContentLayoutComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
 }

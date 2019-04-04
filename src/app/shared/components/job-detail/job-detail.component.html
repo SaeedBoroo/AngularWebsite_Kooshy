@@ -1,4 +1,4 @@
-<div class="mt-4 px-lg-2 px-sm-2 rtl">
+<div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="DataFound==true; else noDataFoundd">
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-9"><h1 class="job_detail__title">  {{ jobDetail.name }} </h1></div>
         <div class="col-xs-12 col-sm-5 col-md-3 text-right job_detail__back">
@@ -32,12 +32,23 @@
                   <div class="job_detail__cats">
                     <h3><img src="../../../../assets/images/cushy-administrator-male-64.png" alt="آیکن کوشی" width="32" height="32"/> {{ jobDetail.firstName }}&nbsp;{{ jobDetail.lastName }}</h3>
                     <h3><img src="../../../../assets/images/cushy-opened-folder-64.png" alt="آیکن کوشی" width="32" height="32"/> {{ jobDetail.category }}</h3>
+                    <img src="../../../../assets/images/cushy-best-seller-64.png" alt="آیکن کوشی" width="32" height="32"/> 
                     <div class="job_detail__voting">
-                        <i 
-                            *ngFor="let item of jobDetail.rate"
-                            class="dx-icon dx-icon-favorites"></i>
-                     </div>
+                      <div class="job_detail__stars" [innerHTML]="rate_JobDetail"></div>
+                      <b>( {{rateId_JobDetail}} ستاره )</b> 
+                    </div>
                   </div>
+
+                  <!-- <dx-map 
+                    provider="bing"
+                    [zoom]="11" 
+                    [height]="300" 
+                    width="100%" 
+                    [controls]="false" 
+                    [markerIconSrc]="mapMarkerUrl" 
+                    [markers]="mapLocation">
+                </dx-map> -->
+
               </div>
               <div class="job_detail__info dx-card responsive-paddings mb-3">
                 <address><img src="../../../../assets/images/cushy-home-64.png" alt="آیکن کوشی" width="32" height="32"> {{ jobDetail.address }} </address>
@@ -61,3 +72,16 @@
         </div>
     </div>
 </div>
+
+<ng-template #noDataFoundd>
+  <div class="mt-4 px-lg-2 px-sm-2 rtl">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 center">
+        <h1 class="job_detail__title">  {{ noDataFoundNow }} </h1>
+        <dx-button [routerLink]="[ '/job-list' ]" text="مشاهده لیست مشاغل" ></dx-button> &nbsp;
+        <dx-button [routerLink]="[ '/category' ]" text="مشاهده دسته بندی مشاغل" ></dx-button> &nbsp;
+        <dx-button [routerLink]="[ '/about-us' ]" text="درباره ما" ></dx-button> &nbsp;
+      </div>
+    </div>
+  </div>
+</ng-template>

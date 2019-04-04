@@ -7,12 +7,22 @@ export class Repository {
     busyStack: Array<boolean> = new Array<boolean>();
     public BaseURL: string = environment.url;
 
-    protected showNotify(message: string) {
+    protected showNotifyError(message: string) {
         notify({
             message: message,
             type: "error",
             width: 400,
-            displayTime: 10000,
+            displayTime: 8000,
+            closeOnClick: true,
+            closeOnOutsideClick: true
+        });
+    }
+    protected showNotifySuccess(message: string) {
+        notify({
+            message: message,
+            type: "success",
+            width: 400,
+            displayTime: 8000,
             closeOnClick: true,
             closeOnOutsideClick: true
         });

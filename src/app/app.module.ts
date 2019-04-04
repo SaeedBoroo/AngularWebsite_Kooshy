@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
     CoreModule,
     SharedModule.forRoot(),
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SingleCardModule,
     LoginFormModule,

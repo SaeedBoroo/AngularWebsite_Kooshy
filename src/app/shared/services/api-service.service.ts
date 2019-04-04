@@ -21,7 +21,7 @@ export class ApiService extends Repository {
     getData(path:string){
         
         var url = this.BaseURL + path;
-        console.log("GET >> " + url);
+        //console.log("GET >> " + url);
         return this.http.get(url)
     }
 
@@ -40,12 +40,12 @@ export class ApiService extends Repository {
         return this.http.get<Slider_Interface[]>(this.BaseURL + 'api/v1/Slider');
     }
 
-    /** GET Category for Home component **/
+    /** GET Category for Category component **/
     getCategory (): Observable<CategoryInterface[]> {
         return this.http.get<CategoryInterface[]>(this.BaseURL + 'api/v1/category');
     }
 
-    /** GET Sub_Category for Home component **/
+    /** GET Sub_Category for Category component **/
     getSubCategory ( subCatId: number ): Observable<CategoryInterface[]> {
         if(subCatId == null)
             { return of([]); }
@@ -54,12 +54,12 @@ export class ApiService extends Repository {
         }
     }
 
-    /** GET Job_List for Home component **/
+    /** GET Job_List for JobList component **/
     getJobList (): Observable<job_Interface[]> {
         return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job?page=' + 1);
     }
 
-    /** GET Job_List__Pagination for Home component **/
+    /** GET Job_List__Pagination for JobList component **/
     getJobListPagination ( pageId: number ): Observable<job_Interface[]> {
         if( pageId == null)
             { return of([]); }
@@ -68,12 +68,13 @@ export class ApiService extends Repository {
         }
     }
 
-    /** GET Job_Details for Home component **/
+    /** GET Job_Details for JobDetail component **/
     getJobDetails ( paramId: number ): Observable<JobDetail_Interface[]> {
         if( paramId == null)
             { return of([]); }
         else{
             return this.http.get<JobDetail_Interface[]>(this.BaseURL + 'api/v1/job/' + paramId);
+            
         }
     }
 
@@ -86,8 +87,37 @@ export class ApiService extends Repository {
         }
     }
 
-
-
+    /* GET rate for any jobs */
+    getRate( id:number ){
+        if(id == 0){
+            return null;
+        }
+        else if(id == 1){
+            return `<i class="dx-icon dx-icon-favorites"></i>`;
+        }
+        else if(id == 2){
+            return `<i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>`;
+        }
+        else if(id == 3){
+            return `<i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>`;
+        }
+        else if(id == 4){
+            return `<i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>`;
+        }
+        else if(id == 5){
+            return `<i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>
+                    <i class="dx-icon dx-icon-favorites"></i>`;
+        }
+    }
 
 
      get(path:string, callback, params: any = null) {
@@ -108,16 +138,16 @@ export class ApiService extends Repository {
             .toPromise()
             .then(response => {
                 if (response != ''){
-                    console.log('Response GET >>> '+response);
+                    //console.log('Response GET >>> '+response);
                     callback(response);
                 }
                 else {
                     let message = '!!! Network Error !!!';
-                    this.showNotify(message);
-                    console.log('Error GET >>> '+message);
+                    this.showNotifyError(message);
+                    //console.log('Error GET >>> '+message);
                 }
             }).catch(err => {
-                this.showNotify('Catch GET >>> '+err.message);
+                this.showNotifyError('Catch GET >>> '+err.message);
             });
     }
     

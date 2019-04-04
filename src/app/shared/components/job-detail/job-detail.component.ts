@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { JobDetail_Interface } from '../../interfaces/job-detail.interface';
 import { Subscription } from 'rxjs';
+import { MapLocations } from '../../interfaces/map-location.interface';
 
 @Component({
   selector: 'app-job-detail',
@@ -17,30 +18,74 @@ export class JobDetailComponent implements OnInit,OnDestroy {
   private paramId: number
   private galleryJobDetail: string[]
   private nameJobDetail: string
+  private rateId_JobDetail: number
+  private rate_JobDetail: any
+  private longitude_JobDetail: any
+  private latitude_JobDetail: any
+  private noDataFoundNow: string
+  private DataFound: boolean = true
+  // private mapMarkerUrl: string = "https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png";
 
 
-  constructor(private title:Title, private apiServive: ApiService, private AvtiveRoute: ActivatedRoute , private router:Router) {
+
+
+  constructor(private title:Title, private apiService: ApiService, private AvtiveRoute: ActivatedRoute , private router:Router) {
     }
 
   ngOnInit() {
-
-    this.paramId = +this.AvtiveRoute.snapshot.params['id']; //just change URL.
+    
+    // this.paramId = +this.AvtiveRoute.snapshot.params['id']; //just change URL.
     this.subscribtion = this.AvtiveRoute.params.subscribe( //Change data 
       (params: Params)=>{
         this.paramId = +params['id']
       });
-
     this.getJobDetails( this.paramId );
+
+    
   }
 
+
+
+noDataFound(){ //if there is no data with selection param ID. show this...
+  this.AvtiveRoute.data.subscribe(
+    data => this.noDataFoundNow = data['noDataFound']
+  );
+  this.DataFound = false;
+}
+
 getJobDetails( paramId:number ){
-  this.subscribtion = this.apiServive.getJobDetails( paramId ).subscribe(
+  if( paramId > 1060  || paramId == 0){
+     this.noDataFound()
+  }
+  else{
+  this.apiService.getJobDetails( paramId ).subscribe(
     (response)=>{
+      this.DataFound = true;
       this.jobDetail = response;
       this.galleryJobDetail = response['pics'];
       this.nameJobDetail = response['name'];
+      this.rateId_JobDetail = response['rate'];
+      this.longitude_JobDetail = response['longitude'];
+      this.latitude_JobDetail = response['latitude'];
       this.title.setTitle( this.nameJobDetail );
+
+      this.rate_JobDetail = this.apiService.getRate( this.rateId_JobDetail );
+      
+      // var mapLocation: MapLocations[] = [{
+      //   location: {
+      //     lat: this.latitude_JobDetail,
+      //     lng: this.longitude_JobDetail
+      // },
+      //     tooltip: {
+      //         isShown: true,
+      //         text: this.nameJobDetail
+      //     }
+      // }];
+      
     });
+
+
+  }
 }
 
   onClickBackToJobList(){

@@ -20,13 +20,12 @@ const routes: Routes = [
     {
       path: '', component: ContentLayoutComponent, children: [
         { path: '', redirectTo: 'home', pathMatch: "full" },
-        { path: 'home',component: HomeComponent},
+        { path: 'home',component: HomeComponent },
         { path: 'job-list', component: JobListComponent, pathMatch: "full" },
-        { path: 'job-detail', component: JobDetailComponent },
-        { path: 'job-detail/:id', component: JobDetailComponent },
+        { path: 'job-detail/:id', component: JobDetailComponent , data:{noDataFound:'هیچ اطلاعاتی برای نمایش وجود ندارد'}},
         { path: 'search', component: JobSearchComponent },
         { path: 'category', component: JobCategoryComponent },
-        { path: 'about-us', component: AboutUsComponent },
+        { path: 'about-us', component: AboutUsComponent  },
         // { path: 'display-data',component: DisplayDataComponent,canActivate: [ AuthGuardService ]},
         // { path: 'profile',component: ProfileComponent,canActivate: [ AuthGuardService ]},
         // { path: 'login', component: LoginFormComponent},

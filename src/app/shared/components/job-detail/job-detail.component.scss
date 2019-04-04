@@ -26,8 +26,19 @@
 ::ng-deep .job_detail__cats img, .job_detail__info img {
     margin: 0 0 12px 2%;
 }
-::ng-deep .job_detail__voting i{
-    color: $cushy_dark2;
+::ng-deep .job_detail__voting{
+    display: inline;
+    .job_detail__stars{
+        display: inline;
+    }
+    i{
+        color: $cushy_green;
+    }
+    b{
+        margin: 0 15px 0 0;
+        position: relative;
+        top: -4px;
+    }
 }
 ::ng-deep .job_detail__info address, ::ng-deep .job_detail__info div {
     margin: 0;
