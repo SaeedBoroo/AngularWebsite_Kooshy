@@ -14,16 +14,16 @@ import { MapLocations } from '../../interfaces/map-location.interface';
 export class JobDetailComponent implements OnInit,OnDestroy {
 
   private jobDetail: JobDetail_Interface[]
+  name_JobDetail: string
   private subscribtion: Subscription
   private paramId: number
-  private galleryJobDetail: string[]
-  private nameJobDetail: string
-  private rateId_JobDetail: number
-  private rate_JobDetail: any
+  galleryJobDetail: string[]
+  rateId_JobDetail: number
+  rate_JobDetail: any
   private longitude_JobDetail: any
   private latitude_JobDetail: any
   private noDataFoundNow: string
-  private DataFound: boolean = true
+  DataFound: boolean = true
   // private mapMarkerUrl: string = "https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png";
 
 
@@ -63,11 +63,11 @@ getJobDetails( paramId:number ){
       this.DataFound = true;
       this.jobDetail = response;
       this.galleryJobDetail = response['pics'];
-      this.nameJobDetail = response['name'];
+      this.name_JobDetail = response['name'];
       this.rateId_JobDetail = response['rate'];
       this.longitude_JobDetail = response['longitude'];
       this.latitude_JobDetail = response['latitude'];
-      this.title.setTitle( this.nameJobDetail );
+      this.title.setTitle( this.name_JobDetail );
 
       this.rate_JobDetail = this.apiService.getRate( this.rateId_JobDetail );
       

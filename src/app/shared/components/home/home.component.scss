@@ -1,3 +1,5 @@
+@import "../../../../themes/colors.scss";
+
 .logos-container {
   margin: 20px 0 40px 0;
   text-align: center;
@@ -65,6 +67,7 @@
     overflow:hidden; 
     white-space:nowrap; 
     text-overflow: ellipsis;
+    color: $cushy_blue !important;
   }
 }
 
@@ -84,6 +87,7 @@
     width: 99%;
     direction: rtl;
     text-align: center;
+    color: $cushy_blue !important;
   }
   :host-context(.screen-x-small) .home_caroucel__title{
     font-size: 17px !important;

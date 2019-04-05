@@ -81,16 +81,23 @@
   color: rgba(0, 0, 0, 0.73) !important;
 }
 
-::ng-deep .header__txtsearch .dx-placeholder {
-  color: rgba(255, 255, 255, 0.73);
-  right: 0;
-  left: unset;
-  padding: 0 11px;
+::ng-deep .header__txtsearch {
+
+  .dx-icon{
+    font-size: 17px;
+  }
+  .dx-placeholder {
+    color: rgba(255, 255, 255, 0.73);
+    right: 0;
+    left: unset;
+    padding: 0 11px;
+  }
+  input.dx-texteditor-input{
+    font-family: yekan-r;
+    letter-spacing: 0.6px;
+  }
 }
 
-::ng-deep .header__txtsearch .dx-icon{
-  font-size: 17px;
-}
 ::ng-deep .dx-texteditor.dx-editor-underlined.dx-show-clear-button .dx-texteditor-input {
   text-align: right;
   color: #fff;

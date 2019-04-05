@@ -3,6 +3,14 @@
 * Version: 18.2.5
 * http://js.devexpress.com/themebuilder/
 */
+@font-face{
+    font-family: yekan-r;
+    src: url(../assets/fonts/YekanRegular.woff)
+}
+@font-face{
+    font-family: yekan-b;
+    src: url(../assets/fonts/Yekan-Bold.woff)
+}
 
  .dx-colorview-palette-handle {
     background: radial-gradient(transparent 5px, rgba(0, 0, 0, 0.2) 6px, #fff 7px, #fff 12px, rgba(0, 0, 0, 0.2) 13px);

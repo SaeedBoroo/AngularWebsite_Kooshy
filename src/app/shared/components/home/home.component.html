@@ -26,7 +26,7 @@
                      <h3 class="home_head__title">برترین ها</h3>
                      <div class="home_top__carousel dx-card responsive-paddings mb-3">
                           <dx-gallery #top_caroucel
-                                [dataSource]="jobTopCaroucel.list"
+                                [dataSource]="jobTopCaroucel"
                                 height="100%"
                                 width="100%"
                                 [loop]="false"
@@ -49,7 +49,7 @@
                     <h3 class="home_head__title"> جدیدترین ها </h3>
                     <div class="home_new__carousel dx-card responsive-paddings mb-3">
                          <dx-gallery #new_caroucel
-                               [dataSource]="jobNewCaroucel.list"
+                               [dataSource]="jobNewCaroucel"
                                height="100%"
                                width="100%"
                                [loop]="false"

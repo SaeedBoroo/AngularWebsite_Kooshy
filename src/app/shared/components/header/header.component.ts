@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
   @Output() menuToggle = new EventEmitter<boolean>();
   @Input() menuToggleEnabled = false;
   @Input() title: string;
-  private searchResult: Observable< job_Interface[]>
+  searchResult: Observable< job_Interface[]>
   private searchQuery = new Subject<string>();
   private subscribtion: Subscription
   isOpen: boolean = false;

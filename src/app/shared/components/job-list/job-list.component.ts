@@ -13,11 +13,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class JobListComponent implements OnInit {
 
   JobLists_All: job_Interface[]
+  JobLists_list: Job_List[]
+  jobList_totalItems: number
+  jobList_totalPages: number
+  jobList_pageNumber: number
+  rate_JobList: any
+  rateId_JobList: number = 0
   showJobList: boolean = true
   pageIdJobs: number ;
   private subscribtion: any
 
-  constructor(private title: Title, private apiServive: ApiService, private router:Router, private AvtiveRoute:ActivatedRoute) {
+  constructor(private title: Title, private apiService: ApiService, private router:Router, private AvtiveRoute:ActivatedRoute) {
 
   }
 
@@ -34,15 +40,27 @@ export class JobListComponent implements OnInit {
   }
 
   getJobList( pageIdJobs ){
-    this.subscribtion = this.apiServive.getJobListPagination( pageIdJobs ).subscribe(
-      response => this.JobLists_All = response);
+    this.subscribtion = this.apiService.getJobListPagination( pageIdJobs ).subscribe(
+      (response) => {
+        this.JobLists_All = response
+        this.JobLists_list = response['list']
+        this.jobList_totalItems = response['totalItems']
+        this.jobList_totalPages = response['totalPages']
+        this.jobList_pageNumber = response['pageNumber']
+        // this.rateId_JobList = new Job_List<this.JobLists_list>['rate']
+        this.rate_JobList = this.apiService.getRate( this.rateId_JobList );
+      });
       this.showJobList = true;
   }
 
   onClickMovePagesJob( pageId:number ){
-    this.subscribtion = this.apiServive.getJobListPagination( pageId ).subscribe(
+    this.subscribtion = this.apiService.getJobListPagination( pageId ).subscribe(
       (response) =>{
         this.JobLists_All = response;
+        this.JobLists_list = response['list']
+        this.jobList_totalItems = response['totalItems']
+        this.jobList_totalPages = response['totalPages']
+        this.jobList_pageNumber = response['pageNumber']
         this.showJobList= true;
       });
       this.router.navigate(
@@ -53,8 +71,6 @@ export class JobListComponent implements OnInit {
           queryParamsHandling: "merge"
         });
   }
-
-
 
   ngOnDestroy() {
     this.subscribtion.unsubscribe();

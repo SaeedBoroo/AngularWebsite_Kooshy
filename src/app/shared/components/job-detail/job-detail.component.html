@@ -1,6 +1,6 @@
 <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="DataFound==true; else noDataFoundd">
     <div class="row">
-        <div class="col-xs-12 col-sm-7 col-md-9"><h1 class="job_detail__title">  {{ jobDetail.name }} </h1></div>
+        <div class="col-xs-12 col-sm-7 col-md-9"><h1 class="job_detail__title">  {{ name_JobDetail }} </h1></div>
         <div class="col-xs-12 col-sm-5 col-md-3 text-right job_detail__back">
           <dx-button 
               (click)="onClickBackToJobList()" >
@@ -30,8 +30,8 @@
                       </dx-gallery>
                   </div>
                   <div class="job_detail__cats">
-                    <h3><img src="../../../../assets/images/cushy-administrator-male-64.png" alt="آیکن کوشی" width="32" height="32"/> {{ jobDetail.firstName }}&nbsp;{{ jobDetail.lastName }}</h3>
-                    <h3><img src="../../../../assets/images/cushy-opened-folder-64.png" alt="آیکن کوشی" width="32" height="32"/> {{ jobDetail.category }}</h3>
+                    <h3><img src="../../../../assets/images/cushy-administrator-male-64.png" alt="آیکن کوشی" width="32" height="32"/> {{ jobDetail?.firstName }}&nbsp;{{ jobDetail?.lastName }}</h3>
+                    <h3><img src="../../../../assets/images/cushy-opened-folder-64.png" alt="آیکن کوشی" width="32" height="32"/> {{ jobDetail?.category }}</h3>
                     <img src="../../../../assets/images/cushy-best-seller-64.png" alt="آیکن کوشی" width="32" height="32"/> 
                     <div class="job_detail__voting">
                       <div class="job_detail__stars" [innerHTML]="rate_JobDetail"></div>
@@ -51,22 +51,22 @@
 
               </div>
               <div class="job_detail__info dx-card responsive-paddings mb-3">
-                <address><img src="../../../../assets/images/cushy-home-64.png" alt="آیکن کوشی" width="32" height="32"> {{ jobDetail.address }} </address>
-                <div><img src="../../../../assets/images/cushy-cell-phone-64.png" alt="آیکن کوشی" width="32" height="32"> {{ jobDetail.mobile }}</div>
-                <div><img src="../../../../assets/images/cushy-phone-64.png" alt="آیکن کوشی" width="32" height="32"> {{ jobDetail.phone }}</div>
+                <address><img src="../../../../assets/images/cushy-home-64.png" alt="آیکن کوشی" width="32" height="32"> {{ jobDetail?.address }} </address>
+                <div><img src="../../../../assets/images/cushy-cell-phone-64.png" alt="آیکن کوشی" width="32" height="32"> {{ jobDetail?.mobile }}</div>
+                <div><img src="../../../../assets/images/cushy-phone-64.png" alt="آیکن کوشی" width="32" height="32"> {{ jobDetail?.phone }}</div>
               </div>
               <div class="job_detail__info dx-card responsive-paddings mb-3">
-                  <div> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"><a href="http://t.me/{{ jobDetail.telegramChannel }}">{{ jobDetail.telegramChannel }}</a></div>
-                   <div> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://t.me/{{ jobDetail.telegramGroup }}">{{ jobDetail.telegramGroup }}</a></div>
-                   <div><img src="../../../../assets/images/cushy-instagram-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://instagram.com/{{ jobDetail.instagram }}">{{ jobDetail.instagram }}</a></div>
-                   <div><img src="../../../../assets/images/cushy-twitter-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://t.com/{{ jobDetail.twitter }}">{{ jobDetail.twitter }}</a></div>
-                   <div><img src="../../../../assets/images/cushy-website-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://{{ jobDetail.website }}" rel="nofollow">{{ jobDetail.website }}</a></div>
-                  <div> <img src="../../../../assets/images/cushy-gmail-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="mailto:{{ jobDetail.mail }}">{{ jobDetail.mail }}</a></div>
+                  <div> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"><a href="http://t.me/{{ jobDetail?.telegramChannel }}">{{ jobDetail?.telegramChannel }}</a></div>
+                   <div> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://t.me/{{ jobDetail?.telegramGroup }}">{{ jobDetail?.telegramGroup }}</a></div>
+                   <div><img src="../../../../assets/images/cushy-instagram-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://instagram.com/{{ jobDetail?.instagram }}">{{ jobDetail?.instagram }}</a></div>
+                   <div><img src="../../../../assets/images/cushy-twitter-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://t.com/{{ jobDetail?.twitter }}">{{ jobDetail?.twitter }}</a></div>
+                   <div><img src="../../../../assets/images/cushy-website-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://{{ jobDetail?.website }}" rel="nofollow">{{ jobDetail?.website }}</a></div>
+                  <div> <img src="../../../../assets/images/cushy-gmail-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="mailto:{{ jobDetail?.mail }}">{{ jobDetail?.mail }}</a></div>
                 </div>
 
                 <div class="job_detail__desc dx-card responsive-paddings mb-3">
                   <p>
-                    {{ jobDetail.description }}
+                    {{ jobDetail?.description }}
                   </p>
                 </div>
         </div>

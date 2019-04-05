@@ -33,12 +33,12 @@ export class HomeComponent implements OnInit,OnDestroy  {
 
   getJobTop(): void {
     this.apiService.getJobTop().subscribe(
-      response => this.jobTopCaroucel = response);
+      response => this.jobTopCaroucel = response['list']);
 
    }
   getJobNew(): void {
     this.apiService.getJobNew().subscribe(
-      response => this.jobNewCaroucel = response);
+      response => this.jobNewCaroucel = response['list']);
 
    }
   getSlider(): void {

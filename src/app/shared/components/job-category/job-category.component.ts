@@ -12,8 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JobCategoryComponent implements OnInit {
 
-  private _getCategory: CategoryInterface[];
-  private category_or_SubCategory: boolean = true;
+  getCategory_list: CategoryInterface[];
+  getCategory_totalItems: number;
+  category_or_SubCategory: boolean = true;
   private parentCategoryNameInParam: string
   private subscribtion: any
 
@@ -26,26 +27,30 @@ export class JobCategoryComponent implements OnInit {
 
   getCategory(): void {
     this.subscribtion = this.apiService.getCategory().subscribe(
-      response => this._getCategory = response);
+      (response) => {
+        this.getCategory_list = response['list']
+        this.getCategory_totalItems = response['totalItems']
+        this.title.setTitle('دسته بندی مشاغل کوشی');
+      });
       this.category_or_SubCategory = true;
-      this.title.setTitle('دسته بندی مشاغل کوشی');
+      
    }
 
    onClickMoveToSubCategory( subCatId: number){
     this.subscribtion = this.apiService.getSubCategory(subCatId).subscribe(
-      response => this._getCategory = response);
+      (response) => {
+        this.getCategory_list = response['list']
+        this.getCategory_totalItems = response['totalItems']
+      });
 
       this.activeRoute.queryParams.subscribe(
-        params => this.parentCategoryNameInParam = params['parentName'] );
-
-      this.title.setTitle( 'زیر دسته بندی مشاغل کوشی' );
-
+        (params) => {
+          this.parentCategoryNameInParam = params['parentName']
+          this.title.setTitle( this.parentCategoryNameInParam + '| دسته بندی کوشی' );
+        } );
       this.category_or_SubCategory = false;
    }
 
-   onClickMoveToMainCategory(): void{
-    this.getCategory();
-   }
 
   ngOnDestroy() {
     this.subscribtion.unsubscribe();

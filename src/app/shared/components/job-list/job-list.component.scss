@@ -25,10 +25,17 @@
 }
 }
 
-::ng-deep .job_list__voting {
+::ng-deep .job_list__voting{
     position: absolute;
     bottom: 0;
-    right: 7%;
+    right: 0;
+    .job_list__stars{
+        display: inline;
+    }
+    i{
+        color: $cushy_yellow;
+        font-size: 15px;
+    }
 }
 ::ng-deep .job_list__back {
     dx-button{

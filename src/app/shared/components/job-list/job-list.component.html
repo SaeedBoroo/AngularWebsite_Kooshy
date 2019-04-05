@@ -1,12 +1,12 @@
 <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="showJobList; else noJobList">
     <div class="row">
-        <div class="col-xs-12 col-sm-7 col-md-9"><h1> لیست مشاغل <sub>(تعداد کل: {{ JobLists_All.totalItems }} )</sub></h1></div>
+        <div class="col-xs-12 col-sm-7 col-md-9"><h1> لیست مشاغل <sub>(تعداد کل: {{ jobList_totalItems }} )</sub></h1></div>
         <div class="col-xs-12 col-sm-5 col-md-3 text-right job_list__back">
           <dx-button 
               (click)="onClickMovePagesJob(JobLists_All.previousPageNumber)"
                >
               <i class="dx-icon dx-icon-arrowright"></i></dx-button>
-          <span>صفحه {{ JobLists_All.pageNumber }}&nbsp; از &nbsp;{{ JobLists_All.totalPages}}</span>
+          <span>صفحه {{ jobList_pageNumber }}&nbsp; از &nbsp;{{ jobList_totalPages }}</span>
           <dx-button 
               (click)="onClickMovePagesJob(JobLists_All.nextPageNumber)">
               <i class="dx-icon dx-icon-arrowleft"></i></dx-button>
@@ -14,11 +14,13 @@
       </div>
   <div class="row">
         <div  
-            *ngFor="let jobList_Item of JobLists_All.list"
+            *ngFor="let jobList_Item of JobLists_list"
             class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
               >
               <div class="dx-card responsive-paddings mb-3 job_list__item">
-                 <a [routerLink]="[ '/job-detail', jobList_Item.id ]">
+                 <a 
+                    [routerLink]="[ '/job-detail', jobList_Item.id ]"
+                    >
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-7">
                             <img src="http://cushy.ir/images/job/{{ jobList_Item.picId }}.jpg" alt="تصویر مشاغل کوشی" title="{{ jobList_Item.name }}" width="250" height="250">
@@ -27,10 +29,9 @@
                         
                              <h3>{{ jobList_Item.name }}</h3>
                             
-                        <div class="job_list__voting">
-                            <i *ngFor="let itemVote of jobList_Item.rate"
-                                class="dx-icon-favorites"></i>
-                        </div>
+                             <div class="job_list__voting">
+                                <div class="job_list__stars" [innerHTML]="rate_JobList"></div>
+                              </div>
                     </div>
                     </div>
                 </a>
