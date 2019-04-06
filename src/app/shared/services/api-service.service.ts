@@ -32,7 +32,7 @@ export class ApiService extends Repository {
 
     /** GET jobTop for Home component  **/
     getJobTop (): Observable<job_Interface[]> {
-        return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/JobTop')
+        return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/Job')
         .pipe(
             catchError(this.handleError('getJobTop', []))
           );
@@ -40,7 +40,7 @@ export class ApiService extends Repository {
 
     /** GET job for Home component **/
     getJobNew (): Observable<job_Interface[]> {
-        return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/Job')
+        return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/JobTop')
         .pipe(
             catchError(this.handleError('getJobNew', []))
           );
@@ -63,11 +63,13 @@ export class ApiService extends Repository {
     }
 
     /** GET Sub_Category for Category component **/
-    getSubCategory ( subCatId: number ): Observable<CategoryInterface[]> {
+    getSubCategory ( subCatId: any ): Observable<CategoryInterface[]> {
         if(subCatId == null)
             { return of([]); }
         else{
-            return this.http.get<CategoryInterface[]>(this.BaseURL + 'api/v1/category?parentId=' + subCatId)
+            return this.http.get<CategoryInterface[]>(this.BaseURL + 'api/v1/category' , {
+                params: new HttpParams().set('parentId', subCatId )
+            })
             .pipe(
                 catchError(this.handleError('getSubCategory', []))
               );
@@ -83,11 +85,13 @@ export class ApiService extends Repository {
     }
 
     /** GET Job_List__Pagination for JobList component **/
-    getJobListPagination ( pageId: number ): Observable<job_Interface[]> {
+    getJobListPagination ( pageId: any ): Observable<job_Interface[]> {
         if( pageId == null)
             { return of([]); }
         else{
-            return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job?page=' + pageId)
+            return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job' , {
+                params: new HttpParams().set('page', pageId )
+            })
             .pipe(
                 catchError(this.handleError('getJobListPagination', []))
               );
@@ -112,7 +116,9 @@ export class ApiService extends Repository {
         if (!term.trim()) 
         {   return of([]);}
         else{
-            return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job?name='+ term )
+            return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job', {
+                params: new HttpParams().set('name', term )
+            })
             .pipe(
                 catchError(this.handleError('getSearch', []))
               );

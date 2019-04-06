@@ -62,10 +62,19 @@
   @media screen and (max-width: 800px) {
     width: 300px !important;
     height: 50px !important;
+    
   }
   @media screen and (max-width: 430px) {
-    width: 100% !important;
+    width: 170% !important;
     height: 50px !important;
+  }
+}
+@media screen and (max-width: 430px) {
+  ::ng-deep .dx-device-mobile .dx-toolbar .dx-toolbar-menu-container{
+    display: none !important;
+  }
+  ::ng-deep .dx-toolbar-center{
+    margin: 0 0 0 6% !important;
   }
 }
 ::ng-deep .header__txtsearch .dx-texteditor-input {

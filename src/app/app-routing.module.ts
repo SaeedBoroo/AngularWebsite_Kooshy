@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { ContentLayoutComponent } from './layouts/content-layout/content-layout.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { LoginFormComponent } from './shared/components';
 import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './shared/components/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';

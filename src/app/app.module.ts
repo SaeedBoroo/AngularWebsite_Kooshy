@@ -14,6 +14,8 @@ import {  SingleCardModule, SideNavOuterToolbarComponent, SideNavInnerToolbarCom
 import {  LoginFormModule, HomeComponent } from './shared/components';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { httpInterceptorProviders } from './shared/http-interceptors';
+import { RequestCache, RequestCacheWithMap } from './shared/services/request-cache.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,13 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
     SingleCardModule,
     LoginFormModule,
   ],
-  providers: [AuthService, ScreenService, AppInfoService],
+  providers: [
+    AuthService, 
+    ScreenService, 
+    AppInfoService,
+    { provide: RequestCache, useClass: RequestCacheWithMap },
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

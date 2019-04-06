@@ -13,6 +13,7 @@ import { DataTransferService } from './services';
 import { JobSearchComponent } from './components/job-search/job-search.component';
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { HttpLogMessageService } from './services/http-log-message.service';
+import { RequestCacheWithMap } from './services/request-cache.service';
 
 @NgModule({
   imports: [
@@ -54,7 +55,12 @@ export class SharedModule {
     // Forcing the whole app to use the returned providers from the AppModule only.
     return {
       ngModule: SharedModule,
-      providers: [ ApiService, DataTransferService, HttpErrorHandler, HttpLogMessageService ]
+      providers: [
+         ApiService,
+         DataTransferService,
+         HttpErrorHandler,
+         HttpLogMessageService, 
+           ]
     };
   }
 }

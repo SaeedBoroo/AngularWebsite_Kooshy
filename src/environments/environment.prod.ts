@@ -1,5 +1,5 @@
 
-const url:string = "https://cushy.ir/"
+const url:string = "http://cushy.ir/"
 export const environment = {
     url: url,
     production: true,
