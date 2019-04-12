@@ -74,10 +74,11 @@
 </div>
 
 <ng-template #noDataFoundd>
-  <div class="mt-4 px-lg-2 px-sm-2 rtl">
+  <div class="text-center mt-4 px-lg-2 px-sm-2 rtl">
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 center">
-        <h1 class="job_detail__title">  {{ noDataFoundNow }} </h1>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+          <cushy-loading ></cushy-loading>
+        <h3 class="job_detail__title">  {{ noDataFoundNow }} </h3>
         <dx-button [routerLink]="[ '/job-list' ]" text="مشاهده لیست مشاغل" ></dx-button> &nbsp;
         <dx-button [routerLink]="[ '/category' ]" text="مشاهده دسته بندی مشاغل" ></dx-button> &nbsp;
         <dx-button [routerLink]="[ '/about-us' ]" text="درباره ما" ></dx-button> &nbsp;

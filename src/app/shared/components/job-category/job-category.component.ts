@@ -17,6 +17,7 @@ export class JobCategoryComponent implements OnInit {
   category_or_SubCategory: boolean = true;
   private parentCategoryNameInParam: string
   private subscribtion: any
+  isLoading: boolean
 
   constructor(private title: Title, private apiService: ApiService, private activeRoute:ActivatedRoute) {}
 
@@ -28,9 +29,16 @@ export class JobCategoryComponent implements OnInit {
   getCategory(): void {
     this.subscribtion = this.apiService.getCategory().subscribe(
       (response) => {
-        this.getCategory_list = response['list']
-        this.getCategory_totalItems = response['totalItems']
-        this.title.setTitle('دسته بندی مشاغل کوشی');
+        if(response['list'] == undefined){
+          this.isLoading = true;
+        }
+        else{
+          this.isLoading = false;
+          this.getCategory_list = response['list']
+          this.getCategory_totalItems = response['totalItems']
+          this.title.setTitle('دسته بندی مشاغل کوشی');
+        }
+        
       });
       this.category_or_SubCategory = true;
       
@@ -39,8 +47,15 @@ export class JobCategoryComponent implements OnInit {
    onClickMoveToSubCategory( subCatId: number){
     this.subscribtion = this.apiService.getSubCategory(subCatId).subscribe(
       (response) => {
-        this.getCategory_list = response['list']
-        this.getCategory_totalItems = response['totalItems']
+        if(response['list'] == undefined){
+          this.isLoading = true;
+        }
+        else{
+          this.isLoading = false;
+          this.getCategory_list = response['list']
+          this.getCategory_totalItems = response['totalItems']
+        }
+        
       });
 
       this.activeRoute.queryParams.subscribe(

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import notify from 'devextreme/ui/notify';
 
-export class Repository {
+export abstract class Repository {
 
-    busyStack: Array<boolean> = new Array<boolean>();
     public BaseURL: string = environment.url;
+    public isLoading: boolean ;
 
     protected showNotifyError(message: string) {
         notify({
@@ -27,14 +27,22 @@ export class Repository {
             closeOnOutsideClick: true
         });
     }
+    protected showNotifyInfo(message: string) {
+        notify({
+            message: message,
+            type: "info",
+            width: 400,
+            displayTime: 8000,
+            closeOnClick: true,
+            closeOnOutsideClick: true
+        });
+    }
 
-    // protected showLoading() {
-    //     this.busyStack.push(true);
-    //     this.eventsService.broadcast("loading", this.isBusy());
+    // showLoading() {
+    //     this.isLoading = true;
     // }
 
-    // protected hideLoading() {
-    //     this.busyStack.pop();
-    //     this.eventsService.broadcast("loading", this.isBusy());
+    // hideLoading() {
+    //     this.isLoading = false;
     // }
 }

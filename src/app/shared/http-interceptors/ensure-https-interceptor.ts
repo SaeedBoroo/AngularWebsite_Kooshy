@@ -11,10 +11,10 @@ export class HttpsInterceptor implements HttpInterceptor {
 
         // clone request and replace 'http://' with 'https://' at the same time
         const secureReq = req.clone({
-            url: req.url.replace('http://', 'https://')
+            url: req.url.replace('http://', 'http://')
         });
         // send the cloned, "secure" request to the next handler.
-        console.log('secureReq >> ', secureReq)
+        //console.log('secureReq >> ', secureReq)
         return next.handle(secureReq);
         
     }

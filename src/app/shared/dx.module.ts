@@ -12,6 +12,7 @@ import {
     DxContextMenuModule,
     DxTreeViewModule,
     DxMapModule,
+    DxLoadIndicatorModule,
 
 } from 'devextreme-angular';
 
@@ -28,7 +29,8 @@ import {
     DxListModule,
     DxContextMenuModule,
     DxTreeViewModule,
-    DxMapModule
+    DxMapModule,
+    DxLoadIndicatorModule
   ],
   exports: [
     DxButtonModule,
@@ -41,7 +43,8 @@ import {
     DxListModule,
     DxContextMenuModule,
     DxTreeViewModule,
-    DxMapModule
+    DxMapModule,
+    DxLoadIndicatorModule
   ]
 })
 export class DxModule {

@@ -3,12 +3,13 @@
               <div class="col-12">
                     <div class="responsive-paddings mb-1 home_slider__item">
                         <div class="text-center">
-                            <dx-gallery #slider
+                            <cushy-loading *ngIf="isLoading_Slider"></cushy-loading>
+                          <dx-gallery #slider  *ngIf="!isLoading_Slider"
                                 [dataSource]="sliderSource"
                                 [slideshowDelay]="3500"
                                 [animationDuration]="700"
                                 height="100%"
-                                [width]="600"
+                                width="80%"
                                 [loop]="true"
                                 [swipeEnabled]="true"
                                 [showNavButtons]="true"
@@ -25,7 +26,8 @@
                      
                      <h3 class="home_head__title">برترین ها</h3>
                      <div class="home_top__carousel dx-card responsive-paddings mb-3">
-                          <dx-gallery #top_caroucel
+                        <cushy-loading *ngIf="isLoading_Top"></cushy-loading>
+                        <dx-gallery #top_caroucel *ngIf="!isLoading_Top"
                                 [dataSource]="jobTopCaroucel"
                                 height="100%"
                                 width="100%"
@@ -38,7 +40,7 @@
                                 [wrapAround]="false">
                               <div *dxTemplate="let topItem of 'item'">
                                   <a [routerLink]="[ '/job-detail', topItem.id ]">
-                                    <img class="home_slider__img" src="http://cushy.ir/images/job/{{ topItem.picId }}.jpg" alt="{{ topItem.name }}" title="{{ topItem.name }}"/>
+                                    <img class="home_slider__img" src="http://cushy.ir/images/job/{{ topItem.picId }}_small.jpg" alt="{{ topItem.name }}" title="{{ topItem.name }}"/>
                                     <h3 class="home_caroucel__title">{{ topItem.name }}</h3>
                                   </a>
                               </div>
@@ -48,7 +50,8 @@
 
                     <h3 class="home_head__title"> جدیدترین ها </h3>
                     <div class="home_new__carousel dx-card responsive-paddings mb-3">
-                         <dx-gallery #new_caroucel
+                        <cushy-loading *ngIf="isLoading_New"></cushy-loading>
+                         <dx-gallery #new_caroucel *ngIf="!isLoading_New"
                                [dataSource]="jobNewCaroucel"
                                height="100%"
                                width="100%"
@@ -61,7 +64,7 @@
                                [wrapAround]="false">
                              <div *dxTemplate="let newItem of 'item'">
                                 <a [routerLink]="[ '/job-detail', newItem.id ]">
-                                  <img class="home_slider__img" src="http://cushy.ir/images/job/{{ newItem.picId }}.jpg" alt="{{ newItem.name }}" title="{{ newItem.name }}"/>
+                                  <img class="home_slider__img" src="http://cushy.ir/images/job/{{ newItem.picId }}_small.jpg" alt="{{ newItem.name }}" title="{{ newItem.name }}"/>
                                   <h3 class="home_caroucel__title">{{ newItem.name }}</h3>
                                 </a>
                              </div>

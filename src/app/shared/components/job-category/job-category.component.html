@@ -1,44 +1,53 @@
-<div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="category_or_SubCategory">
-  <h1>دسته بندی ها <sub>( {{ getCategory_totalItems }} )</sub> </h1>
-  <div class="row">
-      <div 
-          *ngFor="let cat of getCategory_list"
-           class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
-           >
-            <div class="dx-card responsive-paddings mb-3 job_cat__items">
-              <div class="row">
-                <div class="col-12 text-center job_cat__title">
-                    <img src="../../../../assets/images/checked.png" alt="تصویر مشاغل کوشی" title="{{ cat.name }}" width="64" height="64">
-                    <a 
-                      (click)="onClickMoveToSubCategory(cat.id)"
-                      [routerLink]="[ '/category' ]"
-                      [queryParams]="{ parentId : cat.id , parentName: cat.name}"
-                      ><h2> {{ cat.name }} </h2></a>
+<div *ngIf="isLoading" class="text-center mt-5">
+    <cushy-loading ></cushy-loading>
+    <p>مقداری برای نمایش وجود ندارد</p>
+</div>
+
+
+<div *ngIf="!isLoading">
+  <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="category_or_SubCategory">
+    <h1>دسته بندی ها <sub>( {{ getCategory_totalItems }} )</sub> </h1>
+    <div class="row">
+        <div 
+            *ngFor="let cat of getCategory_list"
+            class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
+            >
+              <div class="dx-card responsive-paddings mb-3 job_cat__items">
+                <div class="row">
+                  <div class="col-12 text-center job_cat__title">
+                      <img src="../../../../assets/images/checked.png" alt="تصویر مشاغل کوشی" title="{{ cat.name }}" width="64" height="64">
+                      <a 
+                        (click)="onClickMoveToSubCategory(cat.id)"
+                        [routerLink]="[ '/category' ]"
+                        [queryParams]="{ parentId : cat.id , parentName: cat.name}"
+                        ><h2> {{ cat.name }} </h2></a>
+                  </div>
                 </div>
-              </div>
-          </div>
-      </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="!category_or_SubCategory">
+    <div class="row">
+      <div class="col-9"><h1> {{ parentCategoryNameInParam }} <sub>( {{ getCategory_totalItems }} )</sub></h1></div>
+      <div class="col-3 text-right job_cat__back"><dx-button  [routerLink]="[ '/category' ]" (click)="getCategory()"><i class="dx-icon dx-icon-arrowleft"></i></dx-button ></div>
+    </div>
+    <div class="row">
+        <div 
+            *ngFor="let cat of getCategory_list"
+            class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
+            >
+              <div class="dx-card responsive-paddings mb-3 job_cat__items">
+                <div class="row">
+                  <div class="col-12 text-center job_cat__title">
+                      <img src="../../../../assets/images/ok.svg" alt="تصویر مشاغل کوشی" title="{{ cat.name }}" width="64" height="64">
+                    <h2> {{ cat.name }} </h2>
+                   </div>
+                 </div>
+             </div>
+         </div>
+     </div>
   </div>
 </div>
 
-<div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="!category_or_SubCategory">
-  <div class="row">
-    <div class="col-9"><h1> {{ parentCategoryNameInParam }} <sub>( {{ getCategory_totalItems }} )</sub></h1></div>
-    <div class="col-3 text-right job_cat__back"><dx-button  [routerLink]="[ '/category' ]" (click)="getCategory()"><i class="dx-icon dx-icon-arrowleft"></i></dx-button ></div>
-  </div>
-  <div class="row">
-      <div 
-          *ngFor="let cat of getCategory_list"
-           class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
-           >
-            <div class="dx-card responsive-paddings mb-3 job_cat__items">
-              <div class="row">
-                <div class="col-12 text-center job_cat__title">
-                    <img src="../../../../assets/images/ok.svg" alt="تصویر مشاغل کوشی" title="{{ cat.name }}" width="64" height="64">
-                    <h2> {{ cat.name }} </h2>
-                </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>

@@ -13,7 +13,8 @@ import { DataTransferService } from './services';
 import { JobSearchComponent } from './components/job-search/job-search.component';
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { HttpLogMessageService } from './services/http-log-message.service';
-import { RequestCacheWithMap } from './services/request-cache.service';
+import { myErrorHandlerService } from './services/my-error-handler-service';
+import { CushyLoadingComponent } from './components/loading/cushy-loading.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { RequestCacheWithMap } from './services/request-cache.service';
     HeaderComponent,
     UserPanelComponent,
     SideNavigationMenuComponent,
-    JobSearchComponent
+    JobSearchComponent,
+    CushyLoadingComponent
     
   ],
 
@@ -47,7 +49,8 @@ import { RequestCacheWithMap } from './services/request-cache.service';
     DxModule,
     UserPanelComponent,
     HeaderComponent,
-    SideNavigationMenuComponent
+    SideNavigationMenuComponent,
+    CushyLoadingComponent
   ]
 })
 export class SharedModule {
@@ -59,7 +62,8 @@ export class SharedModule {
          ApiService,
          DataTransferService,
          HttpErrorHandler,
-         HttpLogMessageService, 
+         HttpLogMessageService,
+         myErrorHandlerService
            ]
     };
   }

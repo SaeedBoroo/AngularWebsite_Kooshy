@@ -21,6 +21,7 @@ export class JobListComponent implements OnInit {
   rateId_JobList: number = 0
   showJobList: boolean = true
   pageIdJobs: number ;
+  isLoading: boolean
   private subscribtion: any
 
   constructor(private title: Title, private apiService: ApiService, private router:Router, private AvtiveRoute:ActivatedRoute) {
@@ -42,6 +43,11 @@ export class JobListComponent implements OnInit {
   getJobList( pageIdJobs ){
     this.subscribtion = this.apiService.getJobListPagination( pageIdJobs ).subscribe(
       (response) => {
+      if(response['list'] == undefined) {
+          this.showJobList= false;
+       }
+      else{
+        this.showJobList = true;
         this.JobLists_All = response
         this.JobLists_list = response['list']
         this.jobList_totalItems = response['totalItems']
@@ -49,19 +55,26 @@ export class JobListComponent implements OnInit {
         this.jobList_pageNumber = response['pageNumber']
         // this.rateId_JobList = new Job_List<this.JobLists_list>['rate']
         this.rate_JobList = this.apiService.getRate( this.rateId_JobList );
+       }
+
       });
-      this.showJobList = true;
+      
   }
 
   onClickMovePagesJob( pageId:number ){
     this.subscribtion = this.apiService.getJobListPagination( pageId ).subscribe(
       (response) =>{
-        this.JobLists_All = response;
-        this.JobLists_list = response['list']
-        this.jobList_totalItems = response['totalItems']
-        this.jobList_totalPages = response['totalPages']
-        this.jobList_pageNumber = response['pageNumber']
-        this.showJobList= true;
+        if(response['list'] == undefined){
+          this.showJobList= false;
+          }
+        else {
+          this.JobLists_All = response;
+          this.JobLists_list = response['list']
+          this.jobList_totalItems = response['totalItems']
+          this.jobList_totalPages = response['totalPages']
+          this.jobList_pageNumber = response['pageNumber']
+          this.showJobList= true;
+        }
       });
       this.router.navigate(
         [], 

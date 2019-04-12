@@ -27,7 +27,7 @@ const routes: Routes = [
         // { path: 'display-data',component: DisplayDataComponent,canActivate: [ AuthGuardService ]},
         // { path: 'profile',component: ProfileComponent,canActivate: [ AuthGuardService ]},
         // { path: 'login', component: LoginFormComponent},
-        { path: '**', component: PageNotFoundComponent, pathMatch: 'full' }
+        // { path: '**', component: PageNotFoundComponent, pathMatch: 'full' }
       ]
     }
   

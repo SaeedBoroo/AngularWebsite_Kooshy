@@ -1,4 +1,5 @@
-<div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="showJobList; else noJobList">
+
+<div class="mt-4 px-lg-2 px-sm-2 rtl"  *ngIf="showJobList; else noJobList">
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-9"><h1> لیست مشاغل <sub>(تعداد کل: {{ jobList_totalItems }} )</sub></h1></div>
         <div class="col-xs-12 col-sm-5 col-md-3 text-right job_list__back">
@@ -23,7 +24,7 @@
                     >
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-7">
-                            <img src="http://cushy.ir/images/job/{{ jobList_Item.picId }}.jpg" alt="تصویر مشاغل کوشی" title="{{ jobList_Item.name }}" width="250" height="250">
+                            <img src="http://cushy.ir/images/job/{{ jobList_Item.picId }}_small.jpg" alt="تصویر مشاغل کوشی" title="{{ jobList_Item.name }}" width="146" height="146">
                         </div>
                     <div class="col-xs-12 col-sm-12 col-md-5 text-left mt-2 job_list__title">
                         
@@ -42,8 +43,9 @@
 
 
 <ng-template #noJobList>
-    <div class="mt-4 px-lg-2 px-sm-2 rtl">
-        مقداری برای نمایش وجود ندارد
+    <div class="text-center mt-5 px-lg-2 px-sm-2 rtl">
+        <cushy-loading ></cushy-loading>
+        <p>مقداری برای نمایش وجود ندارد</p>
     </div>
 </ng-template>
     

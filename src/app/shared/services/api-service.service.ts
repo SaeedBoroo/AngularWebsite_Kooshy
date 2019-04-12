@@ -1,25 +1,24 @@
 import { Injectable, Inject } from '@angular/core';
 import { Repository } from './Repository';
-import { Observable, of } from 'rxjs';
+import { Observable, of, pipe } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { job_Interface } from '../interfaces/job.interface';
 import { Slider_Interface } from '../interfaces/slider.interface';
 import { CategoryInterface } from '../interfaces/category.interface';
 import { JobDetail_Interface } from '../interfaces/job-detail.interface';
 import { HandleError, HttpErrorHandler } from './http-error-handler.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
+import { myErrorHandlerService } from './my-error-handler-service';
+ 
 
-declare function $params(obj: any): string;
-
-
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ApiService extends Repository {
     
     private handleError: HandleError;
 
-    constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler){
+    constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler, private myErrorHandler:myErrorHandlerService){
         super()
-        this.handleError = httpErrorHandler.createHandleError('ApiService');
+        this.handleError = httpErrorHandler.createHandleError('ApiService'); // add Service Name...
     }
 
     
@@ -30,15 +29,17 @@ export class ApiService extends Repository {
         return this.http.get(url)
     }
 
-    /** GET jobTop for Home component  **/
+    /** GET jobNewest for Home component - جدیدترین ها  **/
     getJobTop (): Observable<job_Interface[]> {
         return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/Job')
         .pipe(
             catchError(this.handleError('getJobTop', []))
-          );
+          )
+          
+
     }
 
-    /** GET job for Home component **/
+    /** GET job for Home component - برترین ها**/
     getJobNew (): Observable<job_Interface[]> {
         return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/JobTop')
         .pipe(
@@ -50,7 +51,8 @@ export class ApiService extends Repository {
     getSlider (): Observable<Slider_Interface[]> {
         return this.http.get<Slider_Interface[]>(this.BaseURL + 'api/v1/Slider')
         .pipe(
-            catchError(this.handleError('getSlider', []))
+            catchError(this.handleError('getSlider', [])),
+            
           );
     }
 
@@ -120,7 +122,7 @@ export class ApiService extends Repository {
                 params: new HttpParams().set('name', term )
             })
             .pipe(
-                catchError(this.handleError('getSearch', []))
+                catchError(this.handleError<job_Interface[]>('getSearch', []))
               );
         }
     }

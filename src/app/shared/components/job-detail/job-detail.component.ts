@@ -3,8 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services';
 import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { JobDetail_Interface } from '../../interfaces/job-detail.interface';
-import { Subscription } from 'rxjs';
-import { MapLocations } from '../../interfaces/map-location.interface';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-job-detail',
@@ -60,16 +59,22 @@ getJobDetails( paramId:number ){
   else{
   this.apiService.getJobDetails( paramId ).subscribe(
     (response)=>{
-      this.DataFound = true;
-      this.jobDetail = response;
-      this.galleryJobDetail = response['pics'];
-      this.name_JobDetail = response['name'];
-      this.rateId_JobDetail = response['rate'];
-      this.longitude_JobDetail = response['longitude'];
-      this.latitude_JobDetail = response['latitude'];
-      this.title.setTitle( this.name_JobDetail );
-
-      this.rate_JobDetail = this.apiService.getRate( this.rateId_JobDetail );
+      if( response.length == 0){
+        this.DataFound = false;
+        this.noDataFound()
+      }
+      else{
+        this.DataFound = true;
+        this.jobDetail = response;
+        this.galleryJobDetail = response['pics'];
+        this.name_JobDetail = response['name'];
+        this.rateId_JobDetail = response['rate'];
+        this.longitude_JobDetail = response['longitude'];
+        this.latitude_JobDetail = response['latitude'];
+        this.title.setTitle( this.name_JobDetail );
+        this.rate_JobDetail = this.apiService.getRate( this.rateId_JobDetail );
+      }
+      
       
       // var mapLocation: MapLocations[] = [{
       //   location: {
