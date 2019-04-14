@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services';
 import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { JobDetail_Interface } from '../../interfaces/job-detail.interface';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-job-detail',
@@ -95,7 +95,7 @@ getJobDetails( paramId:number ){
 
   onClickBackToJobList(){
     this.router.navigate(
-      ['/job-list'], 
+      ['/jobs-list'], 
       {
         relativeTo: this.AvtiveRoute,
       });

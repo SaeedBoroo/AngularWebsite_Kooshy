@@ -1,12 +1,12 @@
 export const navigation = [
   {
     text: 'صفحه اصلی',
-    path: '/home',
+    path: '/',
     icon: 'home'
   },
   {
     text: 'لیست مشاغل',
-    path: '/job-list',
+    path: '/jobs-list',
     icon: 'rowfield'
   },
   {

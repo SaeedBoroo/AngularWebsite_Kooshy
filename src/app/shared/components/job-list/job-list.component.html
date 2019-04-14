@@ -1,13 +1,13 @@
-
-<div class="mt-4 px-lg-2 px-sm-2 rtl"  *ngIf="showJobList; else noJobList">
+<jobs-list-base *ngIf="showJobList; else noJobList">
+<div class="mt-4 px-lg-2 px-sm-2 rtl" >
     <div class="row">
-        <div class="col-xs-12 col-sm-7 col-md-9"><h1> لیست مشاغل <sub>(تعداد کل: {{ jobList_totalItems }} )</sub></h1></div>
+        <div class="col-xs-12 col-sm-7 col-md-9"><h1> لیست مشاغل و اصناف <sub>(تعداد کل: {{ JobLists_All?.totalItems }} )</sub></h1></div>
         <div class="col-xs-12 col-sm-5 col-md-3 text-right job_list__back">
           <dx-button 
               (click)="onClickMovePagesJob(JobLists_All.previousPageNumber)"
                >
               <i class="dx-icon dx-icon-arrowright"></i></dx-button>
-          <span>صفحه {{ jobList_pageNumber }}&nbsp; از &nbsp;{{ jobList_totalPages }}</span>
+          <span>صفحه {{ JobLists_All?.pageNumber }}&nbsp; از &nbsp;{{ JobLists_All?.totalPages }}</span>
           <dx-button 
               (click)="onClickMovePagesJob(JobLists_All.nextPageNumber)">
               <i class="dx-icon dx-icon-arrowleft"></i></dx-button>
@@ -20,7 +20,7 @@
               >
               <div class="dx-card responsive-paddings mb-3 job_list__item">
                  <a 
-                    [routerLink]="[ '/job-detail', jobList_Item.id ]"
+                    [routerLink]="[ '/job', jobList_Item.id ]"
                     >
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-7">
@@ -40,6 +40,7 @@
         </div>
     </div>
 </div>
+</jobs-list-base>
 
 
 <ng-template #noJobList>

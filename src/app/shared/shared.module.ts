@@ -15,6 +15,7 @@ import { HttpErrorHandler } from './services/http-error-handler.service';
 import { HttpLogMessageService } from './services/http-log-message.service';
 import { myErrorHandlerService } from './services/my-error-handler-service';
 import { CushyLoadingComponent } from './components/loading/cushy-loading.component';
+import { JobsListBaseComponent } from './components/jobs-list-base/jobs-list-base.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { CushyLoadingComponent } from './components/loading/cushy-loading.compon
     UserPanelComponent,
     SideNavigationMenuComponent,
     JobSearchComponent,
-    CushyLoadingComponent
+    CushyLoadingComponent,
+    JobsListBaseComponent
     
   ],
 

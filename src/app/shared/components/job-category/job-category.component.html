@@ -5,11 +5,11 @@
 
 
 <div *ngIf="!isLoading">
-  <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="category_or_SubCategory">
-    <h1>دسته بندی ها <sub>( {{ getCategory_totalItems }} )</sub> </h1>
+  <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="isCategoryLevelMode == 1">
+    <h1>دسته بندی ها <sub>( {{ getCategoryAll?.totalItems }} )</sub> </h1>
     <div class="row">
         <div 
-            *ngFor="let cat of getCategory_list"
+            *ngFor="let cat of getCategoryAll?.list"
             class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
             >
               <div class="dx-card responsive-paddings mb-3 job_cat__items">
@@ -28,26 +28,75 @@
     </div>
   </div>
 
-  <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="!category_or_SubCategory">
+
+
+  <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="isCategoryLevelMode == 2">
     <div class="row">
-      <div class="col-9"><h1> {{ parentCategoryNameInParam }} <sub>( {{ getCategory_totalItems }} )</sub></h1></div>
+      <div class="col-9"><h1> {{ parentCategoryNameInParam }} <sub>( {{ getCategoryAll?.totalItems }} )</sub></h1></div>
       <div class="col-3 text-right job_cat__back"><dx-button  [routerLink]="[ '/category' ]" (click)="getCategory()"><i class="dx-icon dx-icon-arrowleft"></i></dx-button ></div>
     </div>
     <div class="row">
         <div 
-            *ngFor="let cat of getCategory_list"
+            *ngFor="let cat of getCategoryAll?.list"
             class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
             >
               <div class="dx-card responsive-paddings mb-3 job_cat__items">
                 <div class="row">
                   <div class="col-12 text-center job_cat__title">
                       <img src="../../../../assets/images/ok.svg" alt="تصویر مشاغل کوشی" title="{{ cat.name }}" width="64" height="64">
-                    <h2> {{ cat.name }} </h2>
+                    <a><h2 
+                        (click)="onClickMoveToJobsList4Cat( cat.name )" > {{ cat.name }} </h2></a>
                    </div>
                  </div>
              </div>
          </div>
      </div>
   </div>
+
+
+<jobs-list-base *ngIf="isCategoryLevelMode == 3" >
+  <div class="mt-4 px-lg-2 px-sm-2 rtl" >
+      <div class="row">
+          <div class="col-xs-12 col-sm-7 col-md-9"><h1> لیست مشاغل و اصناف <sub>(تعداد کل: {{ getJobsList4Cat?.totalItems }} )</sub></h1></div>
+          <div class="col-xs-12 col-sm-5 col-md-3 text-right job_list__back">
+            <dx-button 
+                (click)="onClickMovePagesJob(getJobsList4Cat?.previousPageNumber)"
+                 >
+                <i class="dx-icon dx-icon-arrowright"></i></dx-button>
+            <span>صفحه {{ getJobsList4Cat?.pageNumber }}&nbsp; از &nbsp;{{ getJobsList4Cat?.totalPages }}</span>
+            <dx-button 
+                (click)="onClickMovePagesJob(getJobsList4Cat?.nextPageNumber)">
+                <i class="dx-icon dx-icon-arrowleft"></i></dx-button>
+          </div>
+        </div>
+    <div class="row">
+          <div  
+              *ngFor="let jobList_Item of getJobsList4Cat?.list"
+              class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
+                >
+                <div class="dx-card responsive-paddings mb-3 job_list__item">
+                   <a 
+                      [routerLink]="[ '/job', jobList_Item.id ]"
+                      >
+                      <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-7">
+                              <img src="http://cushy.ir/images/job/{{ jobList_Item.picId }}_small.jpg" alt="تصویر مشاغل کوشی" title="{{ jobList_Item.name }}" width="146" height="146">
+                          </div>
+                      <div class="col-xs-12 col-sm-12 col-md-5 text-left mt-2 job_list__title">
+                          
+                               <h3>{{ jobList_Item.name }}</h3>
+                              
+                               <div class="job_list__voting">
+                                  <div class="job_list__stars" [innerHTML]="rate_JobList"></div>
+                                </div>
+                      </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+  </jobs-list-base>
+
 </div>
 

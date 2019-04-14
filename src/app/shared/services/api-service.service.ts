@@ -7,7 +7,7 @@ import { Slider_Interface } from '../interfaces/slider.interface';
 import { CategoryInterface } from '../interfaces/category.interface';
 import { JobDetail_Interface } from '../interfaces/job-detail.interface';
 import { HandleError, HttpErrorHandler } from './http-error-handler.service';
-import { catchError, tap, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { myErrorHandlerService } from './my-error-handler-service';
  
 

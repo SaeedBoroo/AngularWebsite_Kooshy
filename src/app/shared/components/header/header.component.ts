@@ -76,7 +76,7 @@ onClickShowDetail( detail_Id:number ){
   this.router.routeReuseStrategy.shouldReuseRoute = function(){ //باید حتما صفحه رفرش بشه و اطلاعات جدید را بیاره
     return false;
   } 
-  this.router.navigate(['/job-detail', detail_Id])
+  this.router.navigate(['/job', detail_Id])
 
   this.searchResult = null;
   this.isOpen = false;

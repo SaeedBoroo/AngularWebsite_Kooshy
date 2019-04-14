@@ -17,10 +17,9 @@ import { JobSearchComponent } from './shared/components/job-search/job-search.co
 const routes: Routes = [
     {
       path: '', component: ContentLayoutComponent, children: [
-        { path: '', redirectTo: 'home', pathMatch: "full" },
-        { path: 'home',component: HomeComponent },
-        { path: 'job-list', component: JobListComponent, pathMatch: "full" },
-        { path: 'job-detail/:id', component: JobDetailComponent , data:{noDataFound:'هیچ اطلاعاتی برای نمایش وجود ندارد'}},
+        { path: '', component: HomeComponent, pathMatch: "full" },
+        { path: 'jobs-list', component: JobListComponent },
+        { path: 'job/:id', component: JobDetailComponent , data:{noDataFound:'هیچ اطلاعاتی برای نمایش وجود ندارد'}},
         { path: 'search', component: JobSearchComponent },
         { path: 'category', component: JobCategoryComponent },
         { path: 'about-us', component: AboutUsComponent  },

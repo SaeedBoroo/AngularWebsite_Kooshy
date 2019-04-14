@@ -39,7 +39,7 @@
                                 [stretchImages]="false"
                                 [wrapAround]="false">
                               <div *dxTemplate="let topItem of 'item'">
-                                  <a [routerLink]="[ '/job-detail', topItem.id ]">
+                                  <a [routerLink]="[ '/job', topItem.id ]">
                                     <img class="home_slider__img" src="http://cushy.ir/images/job/{{ topItem.picId }}_small.jpg" alt="{{ topItem.name }}" title="{{ topItem.name }}"/>
                                     <h3 class="home_caroucel__title">{{ topItem.name }}</h3>
                                   </a>
@@ -63,7 +63,7 @@
                                [stretchImages]="false"
                                [wrapAround]="false">
                              <div *dxTemplate="let newItem of 'item'">
-                                <a [routerLink]="[ '/job-detail', newItem.id ]">
+                                <a [routerLink]="[ '/job', newItem.id ]">
                                   <img class="home_slider__img" src="http://cushy.ir/images/job/{{ newItem.picId }}_small.jpg" alt="{{ newItem.name }}" title="{{ newItem.name }}"/>
                                   <h3 class="home_caroucel__title">{{ newItem.name }}</h3>
                                 </a>

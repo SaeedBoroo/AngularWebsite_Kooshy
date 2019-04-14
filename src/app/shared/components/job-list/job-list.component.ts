@@ -14,9 +14,6 @@ export class JobListComponent implements OnInit {
 
   JobLists_All: job_Interface[]
   JobLists_list: Job_List[]
-  jobList_totalItems: number
-  jobList_totalPages: number
-  jobList_pageNumber: number
   rate_JobList: any
   rateId_JobList: number = 0
   showJobList: boolean = true
@@ -29,7 +26,7 @@ export class JobListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.title.setTitle('لیست مشاغل کوشی');
+    this.title.setTitle('لیست مشاغل و اصناف | کوشی');
 
     this.AvtiveRoute.queryParams.subscribe(
       resp => this.pageIdJobs = resp['page'] || 1
@@ -50,9 +47,6 @@ export class JobListComponent implements OnInit {
         this.showJobList = true;
         this.JobLists_All = response
         this.JobLists_list = response['list']
-        this.jobList_totalItems = response['totalItems']
-        this.jobList_totalPages = response['totalPages']
-        this.jobList_pageNumber = response['pageNumber']
         // this.rateId_JobList = new Job_List<this.JobLists_list>['rate']
         this.rate_JobList = this.apiService.getRate( this.rateId_JobList );
        }
@@ -70,9 +64,6 @@ export class JobListComponent implements OnInit {
         else {
           this.JobLists_All = response;
           this.JobLists_list = response['list']
-          this.jobList_totalItems = response['totalItems']
-          this.jobList_totalPages = response['totalPages']
-          this.jobList_pageNumber = response['pageNumber']
           this.showJobList= true;
         }
       });
