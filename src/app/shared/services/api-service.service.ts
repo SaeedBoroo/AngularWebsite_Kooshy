@@ -114,18 +114,20 @@ export class ApiService extends Repository {
     }
 
     /* GET Search Box */
-    getSearch( term: string ): Observable<job_Interface[]> {
+    getSearch( term: string, pageId?: string ): Observable<job_Interface[]> {
         if (!term.trim()) 
         {   return of([]);}
         else{
             return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job', {
-                params: new HttpParams().set('name', term )
+                params: new HttpParams().set('name', term ).set('page', pageId)
             })
             .pipe(
                 catchError(this.handleError<job_Interface[]>('getSearch', []))
               );
         }
     }
+
+
 
     /* GET rate for any jobs */
     getRate( id:number ){

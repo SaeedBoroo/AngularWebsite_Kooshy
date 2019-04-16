@@ -55,18 +55,17 @@ export class HeaderComponent implements OnInit,OnDestroy {
 
   }
 
-  //---Search---
+  //---Search---Press-Enter--
 search( term: string): void{
   
-  this.subscribtion = this.apiService.getSearch( term ).subscribe( resp => this.searchResult = resp['list'])
-  this.isOpen = true;
+  // this.subscribtion = this.apiService.getSearch( term ).subscribe( resp => this.searchResult = resp['list'])
+  // this.isOpen = true;
+  this.router.routeReuseStrategy.shouldReuseRoute = function(){ //باید حتما صفحه رفرش بشه و اطلاعات جدید را بیاره
+    return false;
+  } 
+  this.dataTransfer.addData( term );
+  this.router.navigate(['/search'], { queryParams: { q: term } })
 
-  // this.searchQuery.next( term );
-  // this.searchResult = this.searchQuery.pipe(
-  //   debounceTime(100),  // wait 100ms after each keystroke before considering the term
-  //   distinctUntilChanged(),  // ignore new term if same as previous term
-  //   switchMap((term: string) => this.apiService.getSearch(term)),  // switch to new search observable each time the term changes
-  // );
 }
 
 

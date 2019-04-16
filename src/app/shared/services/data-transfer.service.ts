@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class DataTransferService {
 
-    myData$: Observable<any>;
+    private value: any = 'cushy';
     private myDataSubject = new Subject<any>();
+    private myMessage = new BehaviorSubject<any>(this.value);
 
     constructor() {
-        this.myData$ = this.myDataSubject.asObservable();
+        
     }
 
-    myData( data ) { 
-        console.log('DataTransferService >>> '+ data ); // I have data! Let's return it so subscribers can use it!
-        
-        this.myDataSubject.next(data); // we can do stuff with data if we want
+    currentData = this.myMessage.asObservable();
+
+    addData(msg){
+        this.myMessage.next(msg);
     }
+
+    // myData( data ) { 
+    //     console.log('DataTransferService >>> '+ data ); // I have data! Let's return it so subscribers can use it!
+        
+    //     this.myDataSubject.next(data); // we can do stuff with data if we want
+    // }
 
     //////----Sender-Component
     // this.myService.myMethod(this.data);

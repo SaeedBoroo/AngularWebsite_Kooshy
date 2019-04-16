@@ -5,6 +5,7 @@ export * from './job-category/job-category.component';
 export * from './job-detail/job-detail.component';
 export * from './job-list/job-list.component';
 export * from './jobs-list-base/jobs-list-base.component';
+export * from './job-search-result/job-search.component';
 export * from './login-form/login-form.component';
 export * from './side-navigation-menu/side-navigation-menu.component';
 export * from './user-panel/user-panel.component';

@@ -11,7 +11,7 @@ import { JobListComponent } from './shared/components/job-list/job-list.componen
 import { JobDetailComponent } from './shared/components/job-detail/job-detail.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { JobCategoryComponent } from './shared/components/job-category/job-category.component';
-import { JobSearchComponent } from './shared/components/job-search/job-search.component';
+import { JobSearchComponent } from './shared/components/job-search-result/job-search.component';
 
 
 const routes: Routes = [

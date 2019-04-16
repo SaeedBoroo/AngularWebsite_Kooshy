@@ -10,12 +10,13 @@ import { ApiService } from './services/api-service.service';
 import { HeaderComponent, UserPanelComponent, SideNavigationMenuComponent } from './components';
 import { JobCategoryComponent } from './components/job-category/job-category.component';
 import { DataTransferService } from './services';
-import { JobSearchComponent } from './components/job-search/job-search.component';
+import { JobSearchComponent } from './components/job-search-result/job-search.component';
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { HttpLogMessageService } from './services/http-log-message.service';
 import { myErrorHandlerService } from './services/my-error-handler-service';
 import { CushyLoadingComponent } from './components/loading/cushy-loading.component';
 import { JobsListBaseComponent } from './components/jobs-list-base/jobs-list-base.component';
+import { cushyNoFoundDataComponent } from './components/cushy-no-found-data/cushy-no-found-data.component';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { JobsListBaseComponent } from './components/jobs-list-base/jobs-list-bas
     SideNavigationMenuComponent,
     JobSearchComponent,
     CushyLoadingComponent,
+    cushyNoFoundDataComponent,
     JobsListBaseComponent
     
   ],
@@ -52,7 +54,8 @@ import { JobsListBaseComponent } from './components/jobs-list-base/jobs-list-bas
     UserPanelComponent,
     HeaderComponent,
     SideNavigationMenuComponent,
-    CushyLoadingComponent
+    CushyLoadingComponent,
+    cushyNoFoundDataComponent
   ]
 })
 export class SharedModule {

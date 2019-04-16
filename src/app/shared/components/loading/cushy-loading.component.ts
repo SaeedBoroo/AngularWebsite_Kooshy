@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector:'cushy-loading',
-    template: '<dx-load-indicator id="loading" indicatorSrc="./assets/images/loading.svg" ></dx-load-indicator>',
+    templateUrl:'./cushy-loading.component.html'
+     
 })
 
 export class CushyLoadingComponent  {
 
+    @Input('errorMsg') msg: string;
     constructor(){}
 
 }

@@ -68,12 +68,12 @@ export class JobCategoryComponent implements OnInit {
      debugger
     this.subscribtion = this.apiService.getSearch(catName).subscribe(
       (response) => {
-        console.log('search no >> ',response)
+        //console.log('search no >> ',response)
         if(response['list'] == 0){
           this.isLoading = true;
         }
         else{
-          console.log('search yea >> ',response)
+          //console.log('search yea >> ',response)
           this.isLoading = false;
           this.getJobsList4Cat = response
         }

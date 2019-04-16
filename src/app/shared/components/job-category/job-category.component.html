@@ -1,6 +1,5 @@
 <div *ngIf="isLoading" class="text-center mt-5">
-    <cushy-loading ></cushy-loading>
-    <p>مقداری برای نمایش وجود ندارد</p>
+    <cushy-loading [errorMsg]="'مقداری برای نمایش وجود ندارد'"></cushy-loading>
 </div>
 
 
@@ -28,6 +27,7 @@
     </div>
   </div>
 
+  
 
 
   <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="isCategoryLevelMode == 2">
