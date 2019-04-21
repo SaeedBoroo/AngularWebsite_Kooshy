@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { DataTransferService, ApiService } from '../../services';
 import { Router, ActivatedRoute } from '@angular/router';
+import { job_Interface } from '../../interfaces/job.interface';
 
 @Component({
   selector: 'job-search-result',
@@ -14,7 +15,7 @@ export class JobSearchComponent implements OnInit {
   isLoading: boolean = false
   isFoundSearch: boolean = true
   searchTerm: string
-  searchResult: any
+  searchResult: job_Interface[]
 
   constructor(private title: Title, private dataTrans: DataTransferService,
     private router: Router, private apiService: ApiService, private AvtiveRoute: ActivatedRoute ) {   }

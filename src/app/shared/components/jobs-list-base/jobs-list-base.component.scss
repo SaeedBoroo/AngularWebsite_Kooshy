@@ -54,3 +54,43 @@
     font-size: 17px !important;
     letter-spacing: 0.2px;
 }
+
+
+@media screen and (max-width: 766px) {
+    ::ng-deep .job_list__item{
+        padding: 10px !important;
+        .job_list__title {
+            padding: 0 10%;
+        }
+         h3 {
+            font-size: 14px !important;
+            font-weight: 600;
+        }
+    }
+}
+@media screen and (max-width: 430px) {
+ ::ng-deep .job_list__head{
+     text-align: center !important;
+     margin: 0 0 15px 0;
+    h1{
+        font-size: 23px !important;
+        margin: 0 5px 16px 0;
+        sub {
+            font-size: 14px !important;
+        }
+    }
+    ::ng-deep .job_list__back{
+        text-align: center !important;
+    }
+    }
+    .job_list__item{
+        padding: 5px !important;
+        .job_list__title {
+            padding: 0 10%;
+        }
+         h3 {
+            font-size: 12px !important;
+            font-weight: 600;
+        }
+    }
+}

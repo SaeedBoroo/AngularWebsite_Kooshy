@@ -38,12 +38,14 @@ export class JobListComponent implements OnInit {
   }
 
   getJobList( pageIdJobs ){
+    this.isLoading = true;
     this.subscribtion = this.apiService.getJobListPagination( pageIdJobs ).subscribe(
       (response) => {
       if(response['list'] == undefined) {
           this.showJobList= false;
        }
       else{
+        this.isLoading = false;
         this.showJobList = true;
         this.JobLists_All = response
         this.JobLists_list = response['list']
@@ -56,12 +58,14 @@ export class JobListComponent implements OnInit {
   }
 
   onClickMovePagesJob( pageId:number ){
+    this.isLoading = true;
     this.subscribtion = this.apiService.getJobListPagination( pageId ).subscribe(
       (response) =>{
         if(response['list'] == undefined){
           this.showJobList= false;
           }
         else {
+          this.isLoading = false;
           this.JobLists_All = response;
           this.JobLists_list = response['list']
           this.showJobList= true;

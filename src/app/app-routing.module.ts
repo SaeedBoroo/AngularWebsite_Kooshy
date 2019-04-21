@@ -21,12 +21,16 @@ const routes: Routes = [
         { path: 'jobs-list', component: JobListComponent },
         { path: 'job/:id', component: JobDetailComponent , data:{noDataFound:'هیچ اطلاعاتی برای نمایش وجود ندارد'}},
         { path: 'search', component: JobSearchComponent },
-        { path: 'category', component: JobCategoryComponent },
+        { path: 'category', component: JobCategoryComponent ,children:[
+          { path: ':id', component: JobCategoryComponent},
+          { path: ':id/:name', component: JobCategoryComponent}
+        ]},
+        
         { path: 'about-us', component: AboutUsComponent  },
         // { path: 'display-data',component: DisplayDataComponent,canActivate: [ AuthGuardService ]},
         // { path: 'profile',component: ProfileComponent,canActivate: [ AuthGuardService ]},
         // { path: 'login', component: LoginFormComponent},
-        // { path: '**', component: PageNotFoundComponent, pathMatch: 'full' }
+         { path: '**', component: PageNotFoundComponent }
       ]
     }
   

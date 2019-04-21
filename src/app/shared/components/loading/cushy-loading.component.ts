@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class CushyLoadingComponent  {
 
     @Input('errorMsg') msg: string;
+    @Input('loadingMsg') loadingMsg: string;
     constructor(){}
 
 }

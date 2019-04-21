@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
   private searchQuery = new Subject<string>();
   private subscribtion: Subscription
   isOpen: boolean = false;
+  placeHolderBox: string
 
   userMenuItems = [{
     text: 'درباره ما',
@@ -54,6 +55,12 @@ export class HeaderComponent implements OnInit,OnDestroy {
   constructor(private router: Router, private apiService: ApiService, private dataTransfer: DataTransferService){
 
   }
+  ngOnInit(){
+
+
+    
+  }
+
 
   //---Search---Press-Enter--
 search( term: string): void{
@@ -82,11 +89,6 @@ onClickShowDetail( detail_Id:number ){
   this.ngOnDestroy();
 }
 
-  ngOnInit(){
-
-    
-    
-  }
 
 
 

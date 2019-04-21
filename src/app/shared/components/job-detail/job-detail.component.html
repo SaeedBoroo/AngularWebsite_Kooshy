@@ -1,4 +1,9 @@
 <div class="mt-4 px-lg-2 px-sm-2 rtl" *ngIf="DataFound==true; else noDataFoundd">
+
+    <div *ngIf="isLoading" class="text-center mt-5">
+        <cushy-loading  [loadingMsg]="'لطفا کمی صبر کنید ...'"></cushy-loading>
+    </div>
+    
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-9"><h1 class="job_detail__title">  {{ name_JobDetail }} </h1></div>
         <div class="col-xs-12 col-sm-5 col-md-3 text-right job_detail__back">
@@ -15,16 +20,16 @@
                           [dataSource]="galleryJobDetail"
                           [slideshowDelay]="3000"
                           [animationDuration]="500"
-                          [height]="500"
-                          width="100%"
+                          height="100%"
+                          width="50%"
                           [loop]="true"
                           [swipeEnabled]="true"
-                          [stretchImages]="true"
+                          [stretchImages]="false"
                           [showNavButtons]="true"
                           [showIndicator]="true">
                           <div *dxTemplate="let Item of 'item'">
                               <div>
-                                <img src="http://cushy.ir{{ Item }}" alt="{{ jobDetail.name }}" />
+                                <img src="http://cushy.ir{{ Item }}" alt="{{ jobDetail.name }}" title="{{ jobDetail.name }}"/>
                               </div>
                           </div>
                       </dx-gallery>
@@ -38,8 +43,8 @@
                       <b>( {{rateId_JobDetail}} ستاره )</b> 
                     </div>
                   </div>
-
-                  <!-- <dx-map 
+<!-- 
+                  <dx-map 
                     provider="bing"
                     [zoom]="11" 
                     [height]="300" 
@@ -77,8 +82,8 @@
   <div class="text-center mt-4 px-lg-2 px-sm-2 rtl">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
-          <cushy-loading ></cushy-loading>
-        <h3 class="job_detail__title">  {{ noDataFoundNow }} </h3>
+          <cushy-no-found-data></cushy-no-found-data>
+          <h3>{{ noDataFoundNow }}</h3>
         <dx-button [routerLink]="[ '/jobs-list' ]" text="مشاهده لیست مشاغل" ></dx-button> &nbsp;
         <dx-button [routerLink]="[ '/category' ]" text="مشاهده دسته بندی مشاغل" ></dx-button> &nbsp;
         <dx-button [routerLink]="[ '/about-us' ]" text="درباره ما" ></dx-button> &nbsp;

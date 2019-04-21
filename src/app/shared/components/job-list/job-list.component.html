@@ -1,6 +1,6 @@
 <jobs-list-base *ngIf="showJobList; else noJobList">
 <div class="mt-4 px-lg-2 px-sm-2 rtl" >
-    <div class="row">
+    <div class="row job_list__head">
         <div class="col-xs-12 col-sm-7 col-md-9"><h1> لیست مشاغل و اصناف <sub>(تعداد کل: {{ JobLists_All?.totalItems }} )</sub></h1></div>
         <div class="col-xs-12 col-sm-5 col-md-3 text-right job_list__back">
           <dx-button 
@@ -13,10 +13,15 @@
               <i class="dx-icon dx-icon-arrowleft"></i></dx-button>
         </div>
       </div>
+
+      <div *ngIf="isLoading" class="text-center mt-5">
+            <cushy-loading  [loadingMsg]="'لطفا کمی صبر کنید ...'"></cushy-loading>
+        </div>
+        
   <div class="row">
         <div  
             *ngFor="let jobList_Item of JobLists_list"
-            class="col-xs-12 col-sm-4 col-md-3 col-lg-3"
+            class="col-6 col-sm-4 col-md-4 col-lg-3"
               >
               <div class="dx-card responsive-paddings mb-3 job_list__item">
                  <a 
@@ -45,8 +50,7 @@
 
 <ng-template #noJobList>
     <div class="text-center mt-5 px-lg-2 px-sm-2 rtl">
-        <cushy-loading ></cushy-loading>
-        <p>مقداری برای نمایش وجود ندارد</p>
+        <cushy-no-found-data [msg]="'مقداری برای نمایش وجود ندارد'" ></cushy-no-found-data>
     </div>
 </ng-template>
     

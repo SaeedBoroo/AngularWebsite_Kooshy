@@ -56,16 +56,16 @@
 /*-------SAeeD--24/3/2019------*/
 
 ::ng-deep .header__txtsearch{
-  width: 500px !important;
+  width: 610px !important;
   height: 50px !important;
-  margin: 13px 0 0 0;
+  margin: 1px 0 0 6%;
   @media screen and (max-width: 800px) {
-    width: 300px !important;
+    width: 400px !important;
     height: 50px !important;
     
   }
   @media screen and (max-width: 430px) {
-    width: 170% !important;
+    width: 210px !important;
     height: 50px !important;
   }
 }
@@ -73,8 +73,9 @@
   ::ng-deep .dx-device-mobile .dx-toolbar .dx-toolbar-menu-container{
     display: none !important;
   }
-  ::ng-deep .dx-toolbar-center{
-    margin: 0 0 0 6% !important;
+  ::ng-deep .dx-texteditor.dx-editor-underlined.dx-show-clear-button .dx-texteditor-input{
+    width: 100%;
+    border-radius: 5px;
   }
 }
 ::ng-deep .header__txtsearch .dx-texteditor-input {

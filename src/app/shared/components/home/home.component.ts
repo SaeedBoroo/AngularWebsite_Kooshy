@@ -36,10 +36,10 @@ export class HomeComponent implements OnInit,OnDestroy  {
 
 
   getJobTop(): void {
-   this.mySubscribe = this.apiService.getJobTop()
-      .subscribe( response => { 
+    this.isLoading_Top = true
+   this.mySubscribe = this.apiService.getJobTop().subscribe( response => { 
          if(response['list'] == undefined) {
-            this.isLoading_Top = true
+            this.isLoading_Top 
          }
          else{
           this.isLoading_Top = false
@@ -49,11 +49,10 @@ export class HomeComponent implements OnInit,OnDestroy  {
         })
    }
   getJobNew(): void {
-    this.mySubscribe = this.apiService.getJobNew()
-    .subscribe( response => { 
-
+    this.isLoading_New = true
+    this.mySubscribe = this.apiService.getJobNew().subscribe( response => { 
        if(response['list'] == undefined) {
-          this.isLoading_New = true
+          this.isLoading_New 
        }
        else{
         this.isLoading_New = false
@@ -64,9 +63,10 @@ export class HomeComponent implements OnInit,OnDestroy  {
 
    }
   getSlider(): void {
+    this.isLoading_Slider = true
     this.mySubscribe = this.apiService.getSlider().subscribe( response => {
       if(response.length == 0) {
-          this.isLoading_Slider = true
+          this.isLoading_Slider
       }
       else{
         this.isLoading_Slider = false

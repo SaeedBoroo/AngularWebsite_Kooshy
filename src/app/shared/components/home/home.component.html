@@ -3,7 +3,7 @@
               <div class="col-12">
                     <div class="responsive-paddings mb-1 home_slider__item">
                         <div class="text-center">
-                            <cushy-loading *ngIf="isLoading_Slider"></cushy-loading>
+                            <cushy-loading *ngIf="isLoading_Slider" ></cushy-loading>
                           <dx-gallery #slider  *ngIf="!isLoading_Slider"
                                 [dataSource]="sliderSource"
                                 [slideshowDelay]="3500"
@@ -24,7 +24,7 @@
                           </div>
                      </div>   
                      
-                     <h3 class="home_head__title">برترین ها</h3>
+                     <h3 class="home_head__title">برترین مشاغل:</h3>
                      <div class="home_top__carousel dx-card responsive-paddings mb-3">
                         <cushy-loading *ngIf="isLoading_Top"></cushy-loading>
                         <dx-gallery #top_caroucel *ngIf="!isLoading_Top"
@@ -35,7 +35,7 @@
                                 [swipeEnabled]="true"
                                 [showNavButtons]="true"
                                 [showIndicator]="false"
-                                [initialItemWidth]="250"
+                                [initialItemWidth]="230"
                                 [stretchImages]="false"
                                 [wrapAround]="false">
                               <div *dxTemplate="let topItem of 'item'">
@@ -48,7 +48,7 @@
                     </div>
 
 
-                    <h3 class="home_head__title"> جدیدترین ها </h3>
+                    <h3 class="home_head__title"> جدیدترین مشاغل: </h3>
                     <div class="home_new__carousel dx-card responsive-paddings mb-3">
                         <cushy-loading *ngIf="isLoading_New"></cushy-loading>
                          <dx-gallery #new_caroucel *ngIf="!isLoading_New"
@@ -59,7 +59,7 @@
                                [swipeEnabled]="true"
                                [showNavButtons]="true"
                                [showIndicator]="false"
-                               [initialItemWidth]="250"
+                               [initialItemWidth]="230"
                                [stretchImages]="false"
                                [wrapAround]="false">
                              <div *dxTemplate="let newItem of 'item'">

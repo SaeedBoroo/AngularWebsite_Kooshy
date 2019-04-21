@@ -113,8 +113,8 @@ export class ApiService extends Repository {
         }
     }
 
-    /* GET Search Box */
-    getSearch( term: string, pageId?: string ): Observable<job_Interface[]> {
+    /* GET Search Box - Use in SearchComp + CategoryComp*/
+    getSearch( term: string, pageId?: string ,  ): Observable<job_Interface[]> {
         if (!term.trim()) 
         {   return of([]);}
         else{
@@ -123,6 +123,18 @@ export class ApiService extends Repository {
             })
             .pipe(
                 catchError(this.handleError<job_Interface[]>('getSearch', []))
+              );
+        }
+    }
+    getSearchCategory( categoryID: string ): Observable<job_Interface[]> {
+        if ( categoryID == null) 
+        {   return of([]);}
+        else{
+            return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job', {
+                params: new HttpParams().set('catId', categoryID )
+            })
+            .pipe(
+                catchError(this.handleError<job_Interface[]>('getSearchCategory', []))
               );
         }
     }

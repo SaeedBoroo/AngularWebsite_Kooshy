@@ -1,15 +1,14 @@
 @import "../../../../themes/colors.scss";
 
-:host-context(.screen-x-small) .job_detail__slider {
-    dx-gallery{
-      width: 100% !important;
-      height: 200px !important;
-    }
-}
+
 ::ng-deep .job_detail__slider {
     margin: 0 0 30px 0;
     img{
         border-radius: 8px;
+        width: 100%;
+    }
+    dx-gallery{
+        margin: auto;
     }
 }
 ::ng-deep .job_detail__title{
@@ -61,5 +60,30 @@
             font-size: 35px;
             color: $cushy_green !important
         }
+    }
+}
+
+
+@media screen and (max-width: 430px) {
+    .job_detail__title {
+        font-size: 22px !important;
+        letter-spacing: 0.1px;
+    }
+    .job_detail__slider {
+        dx-gallery{
+          width: 100% !important;
+          height: 100% !important;
+        }
+    }
+    .job_detail__cats h3 {
+        font-size: 17px !important;
+    }
+    .job_detail__info address, .job_detail__info div{
+        font-size: 16px;
+        word-spacing: 2px;
+    }
+    .job_detail__desc p {
+        font-size: 18px;
+        word-spacing: 2px;
     }
 }

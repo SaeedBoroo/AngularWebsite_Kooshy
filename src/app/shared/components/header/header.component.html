@@ -1,27 +1,25 @@
 <header>
-    <dx-toolbar class="header-toolbar">
+    <dx-toolbar class="header-toolbar container-fluid">
         <div class="row">
             <div class="col-2">
+                    <!-- <dxi-item
+                    text="منو">
+                </dxi-item> -->
                     <dxi-item
                     *ngIf="menuToggleEnabled"
-                    location="after"
+                    location="center"
                     widget="dxButton"
                     cssClass="menu-button"
                     [options]="{
                         icon: 'menu',
                         stylingMode: 'text',
                         onClick: toggleMenu
-                    }">
+                    }"> 
                 </dxi-item>
-                <dxi-item
-                    location="before"
-                    cssClass="header-title"
-                    *ngIf="title"
-                    [text]="title">
-                </dxi-item>
+                
             </div>
 
-
+<!-- 
             <div class="col-2 d-none">
                     <dxi-item
                     location="before"
@@ -42,10 +40,10 @@
                 <div *dxTemplate="let data of 'menuItem'">
                     <app-user-panel [menuItems]="userMenuItems" menuMode="list"></app-user-panel>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="col-8">
+            <div class="col-10">
                     <dxi-item
                     location="center"
                     cssClass="header-title">
@@ -54,7 +52,7 @@
                             class="header__txtsearch"
                             [showClearButton]="true"
                             (keyup.enter)="search(searchBox.value)"
-                            placeholder="هرچه میخواهی را جستجو کن + دکمه اینتر را بزنید"
+                            placeholder="به دنبال چه هستی؟"
                             
                             >
                         </dx-text-box>

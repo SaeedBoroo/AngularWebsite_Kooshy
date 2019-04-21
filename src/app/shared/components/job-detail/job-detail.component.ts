@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services';
-import { ActivatedRoute, Params, Router, Data } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { JobDetail_Interface } from '../../interfaces/job-detail.interface';
 import { Subscription } from 'rxjs';
 
@@ -19,11 +19,12 @@ export class JobDetailComponent implements OnInit,OnDestroy {
   galleryJobDetail: string[]
   rateId_JobDetail: number
   rate_JobDetail: any
-  private longitude_JobDetail: any
-  private latitude_JobDetail: any
-  private noDataFoundNow: string
+  longitude_JobDetail: any
+  latitude_JobDetail: any
+  noDataFoundNow: string
   DataFound: boolean = true
-  // private mapMarkerUrl: string = "https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png";
+  isLoading: boolean
+  // mapMarkerUrl: string = "https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png";
 
 
 
@@ -57,13 +58,15 @@ getJobDetails( paramId:number ){
      this.noDataFound()
   }
   else{
-  this.apiService.getJobDetails( paramId ).subscribe(
-    (response)=>{
+    this.isLoading = true;
+  this.apiService.getJobDetails( paramId ).subscribe((response)=>{
       if( response.length == 0){
+        this.isLoading = false;
         this.DataFound = false;
         this.noDataFound()
       }
       else{
+        this.isLoading = false;
         this.DataFound = true;
         this.jobDetail = response;
         this.galleryJobDetail = response['pics'];
@@ -71,21 +74,23 @@ getJobDetails( paramId:number ){
         this.rateId_JobDetail = response['rate'];
         this.longitude_JobDetail = response['longitude'];
         this.latitude_JobDetail = response['latitude'];
-        this.title.setTitle( this.name_JobDetail );
+        this.title.setTitle( this.name_JobDetail + ' | اپلیکیشن کوشی');
         this.rate_JobDetail = this.apiService.getRate( this.rateId_JobDetail );
+
+
       }
       
       
-      // var mapLocation: MapLocations[] = [{
-      //   location: {
-      //     lat: this.latitude_JobDetail,
-      //     lng: this.longitude_JobDetail
-      // },
-      //     tooltip: {
-      //         isShown: true,
-      //         text: this.nameJobDetail
-      //     }
-      // }];
+        // var mapLocation: MapLocations[] = [{
+        //   location: {
+        //     lat: this.latitude_JobDetail,
+        //     lng: this.longitude_JobDetail
+        // },
+        //     tooltip: {
+        //         isShown: true,
+        //         text: this.name_JobDetail
+        //     }
+        // }];
       
     });
 
