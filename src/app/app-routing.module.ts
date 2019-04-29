@@ -37,7 +37,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), DxDataGridModule, DxFormModule],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload', scrollPositionRestoration: 'enabled' }), DxDataGridModule, DxFormModule],
   exports: [RouterModule],
   providers: [AuthGuardService],
   declarations: [ ProfileComponent, DisplayDataComponent]

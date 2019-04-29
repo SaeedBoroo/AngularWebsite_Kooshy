@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { JobDetail_Interface } from '../../interfaces/job-detail.interface';
 import { Subscription } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class JobDetailComponent implements OnInit,OnDestroy {
 
-  private jobDetail: JobDetail_Interface[]
+  jobDetail: JobDetail_Interface[]
   name_JobDetail: string
   private subscribtion: Subscription
   private paramId: number
@@ -21,11 +21,13 @@ export class JobDetailComponent implements OnInit,OnDestroy {
   rate_JobDetail: any
   longitude_JobDetail: any
   latitude_JobDetail: any
+  mapLocation: any[]
   noDataFoundNow: string
   DataFound: boolean = true
   isLoading: boolean
-  // mapMarkerUrl: string = "https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png";
-
+  bingMapIconUrl: string = 'http://cushy.ir/assets/images/cushy-telegram-app-64.png'
+  bingKeyMap: string = 'AgIIMjI17c8_YnI_Rtfo2eecr1PI8BJlDltEQ_IuXdticdlaLntt0ZeLtxIlnnLH'
+  bingMapType: string = 'satellite'
 
 
 
@@ -34,6 +36,7 @@ export class JobDetailComponent implements OnInit,OnDestroy {
 
   ngOnInit() {
     
+
     // this.paramId = +this.AvtiveRoute.snapshot.params['id']; //just change URL.
     this.subscribtion = this.AvtiveRoute.params.subscribe( //Change data 
       (params: Params)=>{
@@ -41,7 +44,18 @@ export class JobDetailComponent implements OnInit,OnDestroy {
       });
     this.getJobDetails( this.paramId );
 
-    
+
+     //----Scrol to top default 
+     this.router.routeReuseStrategy.shouldReuseRoute = function(){
+      return false;
+  };
+     this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+          this.router.navigated = false;
+          window.scrollTo(0, 0);
+      }
+    });
+
   }
 
 
@@ -59,7 +73,7 @@ getJobDetails( paramId:number ){
   }
   else{
     this.isLoading = true;
-  this.apiService.getJobDetails( paramId ).subscribe((response)=>{
+    this.subscribtion = this.apiService.getJobDetails( paramId ).subscribe((response)=>{
       if( response.length == 0){
         this.isLoading = false;
         this.DataFound = false;
@@ -77,11 +91,7 @@ getJobDetails( paramId:number ){
         this.title.setTitle( this.name_JobDetail + ' | اپلیکیشن کوشی');
         this.rate_JobDetail = this.apiService.getRate( this.rateId_JobDetail );
 
-
-      }
-      
-      
-        // var mapLocation: MapLocations[] = [{
+        // this.mapLocation = [{
         //   location: {
         //     lat: this.latitude_JobDetail,
         //     lng: this.longitude_JobDetail
@@ -91,6 +101,10 @@ getJobDetails( paramId:number ){
         //         text: this.name_JobDetail
         //     }
         // }];
+      }
+      
+      
+
       
     });
 

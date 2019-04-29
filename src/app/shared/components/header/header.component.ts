@@ -105,6 +105,19 @@ onClickShowDetail( detail_Id:number ){
   //   this.router.navigate(['/search'], { queryParams: { q: querySearch } })
   // }
 
+
+//   navToTop(event) { //-----------------Scroll-to-TOP---------------------
+//     let scrollToTop = window.setInterval(() => {
+//         let pos = window.pageYOffset;
+//         if (pos > 0) {
+//             window.scrollTo(0, 0); 
+//         } else {
+//             window.clearInterval(scrollToTop);
+//         }
+//     }, 300);
+// }
+
+
   toggleMenu = () => {
     this.menuToggle.emit();
   }

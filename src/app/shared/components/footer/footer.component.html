@@ -1,3 +1,51 @@
-<div class="content-block text-center">
-    اپلیکیشن کوشی | {{ date }}
+<footer>
+<div class="row rtl">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <p class="cushy_about">
+                    
+                    کوشی اپلیکیشنی متفاوت برای تلفن های هوشمند است که با هدف دسترسی سریع و آسان کاربران به خدمات
+                        ،اماکن و اصناف اطراف خود طراحی شده و روز به روز بر کاربران و اطلاعات آن افزوده می شود.
+                </p>
+            </div>
+            <div class="col-12 col-sm-5 col-md-5 col-lg-5 offset-1 d-none d-sm-block ">
+                <div class="cushy_contact text-center">
+                    <address>اصفهان ، مبارکه</address>
+                    <div>موبایل (تلگرام): 09333744519</div>
+                    <div> ایمیل: info@cushy.ir</div>
+                </div>    
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3 cushy_links">
+        <ul>
+            <li><a [routerLink]="[ '/' ]">صفحه اصلی</a></li>
+            <li><a [routerLink]="[ '/jobs-list' ]">مشاغل شهر </a></li>
+            <li><a [routerLink]="[ '/category' ]">دسته بندی ها</a></li>
+            <li><a [routerLink]="[ '/help' ]">آموزش اپلیکیشن</a></li>
+            <li><a [routerLink]="[ '/about-us' ]">درباره ما</a></li>
+        </ul>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+        <div class="cushy_socials">
+            <h4>کوشی را در شبکه های اجتماعی دنبال کنید</h4>
+            <a href="https://t.me/cushyapp" title="تلگرام کوشی" target="_blank">
+                 <img src="../../../assets/images/cushy-telegram-app-64.png" alt="تلگرام برنامه مشاغل کوشی" width="50" height="50">
+            </a>
+            <a href="https://instagram.com/cushy_ir" title="اینستاگرام کوشی" target="_blank">
+                 <img src="../../../assets/images/cushy-instagram-64.png" alt="اینستاگرام برنامه مشاغل کوشی" width="50" height="50">
+            </a>
+            <a href="https://dribbble.com/cushy" title="دریبل کوشی" target="_blank">
+                 <img src="../../../assets/images/cushy-dribbble-64.png" alt="دریبل برنامه مشاغل کوشی" width="50" height="50">
+            </a>
+       </div>
+    </div>
 </div>
+
+<div class="content-block text-center cushy_copyright">
+    تمامی حقوق این سایت متعلق به <a [routerLink]="[ '/' ]" title="اپلیکیشن مسیریابی و جستجوی مشاغل کوشی">اپلیکیشن کوشی</a> می باشد | {{ date }} &copy;
+</div>
+</footer>

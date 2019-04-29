@@ -1,3 +1,4 @@
+@import "../../../../themes/colors.scss";
 
 .fab-fix {
     position: fixed;
@@ -6,3 +7,52 @@
     color: white;
   }
   .fab-fix button{ background-color: crimson !important}
+
+  footer {
+    padding: 30px 0 10px 0;
+    border-top: 1px solid #e4e4e4;
+    margin: 40px 0 0 0;
+    .cushy_contact {
+      text-align: right !important;
+  }
+  .cushy_links ul {
+    list-style: none;
+    line-height: 25px;
+    
+}
+.cushy_links ul li a:hover {
+  padding: 0 10px 0 0;
+  color: $cushy_blue;
+}
+.cushy_links ul li a , .cushy_socials img{
+  transition: ease 0.25s;
+}
+.cushy_socials img {
+  filter: grayscale(1);
+  padding: 9px;
+}
+.cushy_socials img:hover {
+  filter: grayscale(0.5);
+}
+.cushy_socials h4 {
+  font-size: 12px !important;
+}
+.cushy_about> img{filter: grayscale(1);}
+.cushy_about, .cushy_links ul li a, .cushy_contact, .cushy_socials h4, .cushy_copyright, .cushy_copyright a {
+  color: #aaa;
+}
+
+}
+
+@media screen and (max-width: 430px) {
+  footer > div{
+    text-align: center;
+  }
+  .cushy_contact{
+    padding: 15px 0;
+  }
+  .cushy_contact >div, .cushy_contact > address {
+    text-align: center !important;
+
+}
+}

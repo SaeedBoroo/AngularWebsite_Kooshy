@@ -1,5 +1,6 @@
 @import "../../../../themes/colors.scss";
 
+.hide_JobItem{ display: none; }
 
 ::ng-deep .job_detail__slider {
     margin: 0 0 30px 0;
@@ -63,6 +64,13 @@
     }
 }
 
+dx-map.dx-map {
+    margin: 0 auto;
+
+    ::ng-deep canvas#tileCanvasId {
+        border-radius: 20px !important;
+    }
+}
 
 @media screen and (max-width: 430px) {
     .job_detail__title {
