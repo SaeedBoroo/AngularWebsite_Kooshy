@@ -25,9 +25,10 @@ export class JobDetailComponent implements OnInit,OnDestroy {
   noDataFoundNow: string
   DataFound: boolean = true
   isLoading: boolean
-  bingMapIconUrl: string = 'http://cushy.ir/assets/images/cushy-telegram-app-64.png'
-  bingKeyMap: string = 'AgIIMjI17c8_YnI_Rtfo2eecr1PI8BJlDltEQ_IuXdticdlaLntt0ZeLtxIlnnLH'
-  bingMapType: string = 'satellite'
+  TotalJobItems : number
+  // bingMapIconUrl: string = 'http://cushy.ir/assets/images/cushy-telegram-app-64.png'
+  // bingKeyMap: string = 'AgIIMjI17c8_YnI_Rtfo2eecr1PI8BJlDltEQ_IuXdticdlaLntt0ZeLtxIlnnLH'
+  // bingMapType: string = 'satellite'
 
 
 
@@ -37,7 +38,7 @@ export class JobDetailComponent implements OnInit,OnDestroy {
   ngOnInit() {
     
 
-    // this.paramId = +this.AvtiveRoute.snapshot.params['id']; //just change URL.
+    this.paramId = +this.AvtiveRoute.snapshot.params['id']; //just change URL.
     this.subscribtion = this.AvtiveRoute.params.subscribe( //Change data 
       (params: Params)=>{
         this.paramId = +params['id']
@@ -67,49 +68,52 @@ noDataFound(){ //if there is no data with selection param ID. show this...
   this.DataFound = false;
 }
 
+
+
 getJobDetails( paramId:number ){
-  if( paramId > 1060  || paramId == 0){
-     this.noDataFound()
-  }
-  else{
-    this.isLoading = true;
-    this.subscribtion = this.apiService.getJobDetails( paramId ).subscribe((response)=>{
-      if( response.length == 0){
-        this.isLoading = false;
-        this.DataFound = false;
-        this.noDataFound()
-      }
-      else{
-        this.isLoading = false;
-        this.DataFound = true;
-        this.jobDetail = response;
-        this.galleryJobDetail = response['pics'];
-        this.name_JobDetail = response['name'];
-        this.rateId_JobDetail = response['rate'];
-        this.longitude_JobDetail = response['longitude'];
-        this.latitude_JobDetail = response['latitude'];
-        this.title.setTitle( this.name_JobDetail + ' | اپلیکیشن کوشی');
-        this.rate_JobDetail = this.apiService.getRate( this.rateId_JobDetail );
+  this.apiService.getJobTop().subscribe( resp => {
+    this.TotalJobItems = resp['totalItems'];
 
-        // this.mapLocation = [{
-        //   location: {
-        //     lat: this.latitude_JobDetail,
-        //     lng: this.longitude_JobDetail
-        // },
-        //     tooltip: {
-        //         isShown: true,
-        //         text: this.name_JobDetail
-        //     }
-        // }];
-      }
-      
-      
+    if( paramId > this.TotalJobItems+3  || paramId == 0){
+       this.noDataFound()
+    }
+    else{
+      this.isLoading = true;
+      this.subscribtion = this.apiService.getJobDetails( paramId ).subscribe((response)=>{
+        if( response.length == 0){
+          this.isLoading = false;
+          this.DataFound = false;
+          this.noDataFound()
+        }
+        else{
+          this.isLoading = false;
+          this.DataFound = true;
+          this.jobDetail = response;
+          this.galleryJobDetail = response['pics'];
+          this.name_JobDetail = response['name'];
+          this.rateId_JobDetail = response['rate'];
+          this.longitude_JobDetail = response['longitude'];
+          this.latitude_JobDetail = response['latitude'];
+          this.title.setTitle( this.name_JobDetail + ' | اپلیکیشن کوشی');
+          this.rate_JobDetail = this.apiService.getRate( this.rateId_JobDetail );
+  
+          // this.mapLocation = [{
+          //   location: {
+          //     lat: this.latitude_JobDetail,
+          //     lng: this.longitude_JobDetail
+          // },
+          //     tooltip: {
+          //         isShown: true,
+          //         text: this.name_JobDetail
+          //     }
+          // }];
+        }
+      });
+    }
 
-      
-    });
+  });
 
 
-  }
 }
 
   onClickBackToJobList(){

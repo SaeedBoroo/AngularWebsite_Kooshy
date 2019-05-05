@@ -12,6 +12,7 @@ import { JobDetailComponent } from './shared/components/job-detail/job-detail.co
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { JobCategoryComponent } from './shared/components/job-category/job-category.component';
 import { JobSearchComponent } from './shared/components/job-search-result/job-search.component';
+import { CushyHelpComponent } from './pages/cushy-help/cushy-help.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
         ]},
         
         { path: 'about-us', component: AboutUsComponent  },
+        { path: 'help', component: CushyHelpComponent },
         // { path: 'display-data',component: DisplayDataComponent,canActivate: [ AuthGuardService ]},
         // { path: 'profile',component: ProfileComponent,canActivate: [ AuthGuardService ]},
         // { path: 'login', component: LoginFormComponent},

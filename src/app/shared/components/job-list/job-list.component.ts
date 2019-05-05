@@ -37,7 +37,7 @@ export class JobListComponent implements OnInit {
     
   }
 
-  getJobList( pageIdJobs ){
+  getJobList( pageIdJobs:number ){
     this.isLoading = true;
     this.subscribtion = this.apiService.getJobListPagination( pageIdJobs ).subscribe(
       (response) => {
@@ -45,12 +45,17 @@ export class JobListComponent implements OnInit {
           this.showJobList= false;
        }
       else{
-        this.isLoading = false;
-        this.showJobList = true;
-        this.JobLists_All = response
-        this.JobLists_list = response['list']
-        // this.rateId_JobList = new Job_List<this.JobLists_list>['rate']
-        this.rate_JobList = this.apiService.getRate( this.rateId_JobList );
+        if( pageIdJobs > response['totalPages'] ){
+            this.showJobList= false;
+        }else{
+            this.isLoading = false;
+            this.showJobList = true;
+            this.JobLists_All = response
+            this.JobLists_list = response['list']
+            // this.rateId_JobList = new Job_List<this.JobLists_list>['rate']
+            this.rate_JobList = this.apiService.getRate( this.rateId_JobList );
+        }
+        
        }
 
       });

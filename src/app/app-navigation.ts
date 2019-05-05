@@ -18,6 +18,11 @@ export const navigation = [
     text: 'درباره ما',
     path: '/about-us',
     icon: 'info'
+  },
+  {
+    text: 'آموزش اپلیکیشن کوشی',
+    path: '/help',
+    icon: 'doc'
   }
   // {
   //   text: 'جستجو',

@@ -115,9 +115,11 @@ export class ApiService extends Repository {
 
     /* GET Search Box - Use in SearchComp + CategoryComp*/
     getSearch( term: string, pageId?: string ,  ): Observable<job_Interface[]> {
+        term.trim()
         if (!term.trim()) 
         {   return of([]);}
         else{
+            
             return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/job', {
                 params: new HttpParams().set('name', term ).set('page', pageId)
             })

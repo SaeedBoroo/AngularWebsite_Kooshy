@@ -42,8 +42,13 @@
                       <div class="job_detail__stars" [innerHTML]="rate_JobDetail"></div>
                       <b>( {{rateId_JobDetail}} ستاره )</b> 
                     </div>
-                  </div>
+                    <div class="job_detail__routemap">
+                        <img src="../../../../assets/images/cushy-map-64.png" alt="آیکن کوشی" width="32" height="32"/> <a href="https://www.google.com/maps?q=loc:{{ latitude_JobDetail }},{{ longitude_JobDetail }}" target="_blank" title="{{ name_JobDetail }}" >مسیریابی در گوگل</a>
+                    </div>
+                    
 
+                  </div>
+<!-- 
                   <dx-map 
                     provider="bing"
                     [key]="bingKeyMap"
@@ -55,7 +60,7 @@
                     [autoAdjust]="true"
                     markerIconSrc="'bingMapIconUrl'"
                     [center]="{ lat: latitude_JobDetail, lng: longitude_JobDetail }">
-                </dx-map>
+                </dx-map> -->
 
               </div>
               <div class="job_detail__info dx-card responsive-paddings mb-3">
@@ -65,12 +70,12 @@
               </div>
               <div class="job_detail__info dx-card responsive-paddings mb-3" 
                    [class.hide_JobItem]="jobDetail?.telegramChannel === null && jobDetail?.telegramGroup === null && jobDetail?.website === null && jobDetail?.instagram === null && jobDetail?.twitter === null && jobDetail?.mail === null">
-                   <div [class.hide_JobItem]="jobDetail?.telegramChannel === null"> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"><a href="http://t.me/{{ jobDetail?.telegramChannel }}">{{ jobDetail?.telegramChannel }}</a></div>
-                   <div [class.hide_JobItem]="jobDetail?.telegramGroup === null"> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://t.me/{{ jobDetail?.telegramGroup }}">{{ jobDetail?.telegramGroup }}</a></div>
-                   <div [class.hide_JobItem]="jobDetail?.instagram === null"> <img src="../../../../assets/images/cushy-instagram-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://instagram.com/{{ jobDetail?.instagram }}">{{ jobDetail?.instagram }}</a></div>
-                   <div [class.hide_JobItem]="jobDetail?.twitter === null"> <img src="../../../../assets/images/cushy-twitter-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://t.com/{{ jobDetail?.twitter }}">{{ jobDetail?.twitter }}</a></div>
-                   <div [class.hide_JobItem]="jobDetail?.website === null"> <img src="../../../../assets/images/cushy-website-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://{{ jobDetail?.website }}" rel="nofollow">{{ jobDetail?.website }}</a></div>
-                   <div [class.hide_JobItem]="jobDetail?.mail === null"> <img src="../../../../assets/images/cushy-gmail-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="mailto:{{ jobDetail?.mail }}">{{ jobDetail?.mail }}</a></div>
+                   <div [class.hide_JobItem]="jobDetail?.telegramChannel === null"> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"><a href="http://t.me/{{ jobDetail?.telegramChannel }}" rel="nofollow" target="_blank">{{ jobDetail?.telegramChannel }}</a></div>
+                   <div [class.hide_JobItem]="jobDetail?.telegramGroup === null"> <img src="../../../../assets/images/cushy-telegram-app-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://t.me/{{ jobDetail?.telegramGroup }}" rel="nofollow" target="_blank"> {{ jobDetail?.telegramGroup }}</a></div>
+                   <div [class.hide_JobItem]="jobDetail?.instagram === null"> <img src="../../../../assets/images/cushy-instagram-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://instagram.com/{{ jobDetail?.instagram }}" rel="nofollow" target="_blank">{{ jobDetail?.instagram }}</a></div>
+                   <div [class.hide_JobItem]="jobDetail?.twitter === null"> <img src="../../../../assets/images/cushy-twitter-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://t.com/{{ jobDetail?.twitter }}" rel="nofollow" target="_blank">{{ jobDetail?.twitter }}</a></div>
+                   <div [class.hide_JobItem]="jobDetail?.website === null"> <img src="../../../../assets/images/cushy-website-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="http://{{ jobDetail?.website }}"  rel="nofollow" target="_blank">{{ jobDetail?.website }}</a></div>
+                   <div [class.hide_JobItem]="jobDetail?.mail === null"> <img src="../../../../assets/images/cushy-gmail-64.png" alt="آیکن کوشی" width="32" height="32"> <a href="mailto:{{ jobDetail?.mail }}" rel="nofollow" target="_blank">{{ jobDetail?.mail }}</a></div>
                 </div>
 
                 <div class="job_detail__desc dx-card responsive-paddings mb-3" [class.hide_JobItem]="jobDetail?.description === null">

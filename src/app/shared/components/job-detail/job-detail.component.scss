@@ -71,6 +71,11 @@ dx-map.dx-map {
         border-radius: 20px !important;
     }
 }
+.job_detail__routemap a {
+    font-size: 19px;
+    font-weight: 700;
+    color: $cushy_blue;
+}
 
 @media screen and (max-width: 430px) {
     .job_detail__title {

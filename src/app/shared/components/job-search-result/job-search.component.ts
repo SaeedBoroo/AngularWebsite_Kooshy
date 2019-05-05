@@ -16,13 +16,14 @@ export class JobSearchComponent implements OnInit {
   isFoundSearch: boolean = true
   searchTerm: string
   searchResult: job_Interface[]
+  paginationId : number
+
 
   constructor(private title: Title, private dataTrans: DataTransferService,
     private router: Router, private apiService: ApiService, private AvtiveRoute: ActivatedRoute ) {   }
 
   ngOnInit() {
     this.title.setTitle('جستجوی مشاغل و اصناف شهر | کوشی');
-
     this.getDataFromHeader();
   }
 
@@ -46,6 +47,7 @@ export class JobSearchComponent implements OnInit {
 
   
   onClickMoveOtherPages( pageId ){
+
     this.mySubscribes = this.apiService.getSearch( this.searchTerm , pageId ).subscribe(
       (response) =>{
         if(response['list'] == 0){
@@ -59,7 +61,7 @@ export class JobSearchComponent implements OnInit {
         this.isLoading = false;
       });
       // this.router.navigate(
-      //   [], 
+      //   ['/search'], 
       //   {
       //     relativeTo: this.AvtiveRoute,
       //     queryParams: { q:this.searchTerm, page: pageId },

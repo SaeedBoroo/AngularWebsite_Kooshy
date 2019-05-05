@@ -15,6 +15,7 @@ export class DataTransferService {
     currentData = this.myMessage.asObservable();
 
     addData(msg){
+        msg.trim()
         this.myMessage.next(msg);
     }
 

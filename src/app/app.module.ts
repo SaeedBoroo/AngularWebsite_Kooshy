@@ -16,6 +16,9 @@ import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { httpInterceptorProviders } from './shared/http-interceptors';
 import { RequestCache, RequestCacheWithMap } from './shared/services/request-cache.service';
+import { CushyHelpComponent } from './pages/cushy-help/cushy-help.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { RequestCache, RequestCacheWithMap } from './shared/services/request-cac
     AboutUsComponent,
     SideNavOuterToolbarComponent,
     SideNavInnerToolbarComponent,
-    HomeComponent
+    HomeComponent,
+    CushyHelpComponent
 
   ],
   imports: [
@@ -38,6 +42,7 @@ import { RequestCache, RequestCacheWithMap } from './shared/services/request-cac
     AppRoutingModule,
     SingleCardModule,
     LoginFormModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     AuthService, 
