@@ -28,6 +28,8 @@ const routes: Routes = [
         ]},
         
         { path: 'about-us', component: AboutUsComponent  },
+        { path: 'about', redirectTo: '/about-us'  },
+        { path: 'contact', redirectTo: '/about-us'  },
         { path: 'help', component: CushyHelpComponent },
         // { path: 'display-data',component: DisplayDataComponent,canActivate: [ AuthGuardService ]},
         // { path: 'profile',component: ProfileComponent,canActivate: [ AuthGuardService ]},

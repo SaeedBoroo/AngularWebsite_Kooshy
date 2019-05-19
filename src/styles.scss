@@ -42,3 +42,20 @@ html, body {
 }
 
 .rtl{direction: rtl; text-align: right;}
+
+.cushy_alert_success{
+    background-color: rgba(49, 163, 53, 0.24);
+    border-radius: 5px;
+    font-size: 26px !important;
+    padding: 10px 0;
+    box-shadow: 0px 5px 14px -10px #111;
+
+}
+.cushy_alert_fail{
+    background-color: rgba(163, 66, 49, 0.24);
+    border-radius: 5px;
+    font-size: 26px !important;
+    padding: 10px 0;
+    box-shadow: 0px 5px 14px -10px #111;
+
+}
