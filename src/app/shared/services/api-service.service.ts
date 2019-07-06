@@ -1,6 +1,6 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Repository } from './Repository';
-import { Observable, of, pipe } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { job_Interface } from '../interfaces/job.interface';
 import { Slider_Interface } from '../interfaces/slider.interface';
@@ -9,20 +9,17 @@ import { JobDetail_Interface } from '../interfaces/job-detail.interface';
 import { HandleError, HttpErrorHandler } from './http-error-handler.service';
 import { catchError } from 'rxjs/operators';
 import { myErrorHandlerService } from './my-error-handler-service';
- 
 
 @Injectable()
 export class ApiService extends Repository {
-    
     private handleError: HandleError;
 
-    constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler, private myErrorHandler:myErrorHandlerService){
-        super()
+    constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler, private myErrorHandler: myErrorHandlerService) {
+        super();
         this.handleError = httpErrorHandler.createHandleError('ApiService'); // add Service Name...
     }
 
-    
-    getData(path:string){
+    getData(path: string) {
         
         var url = this.BaseURL + path;
         //console.log("GET >> " + url);
@@ -34,8 +31,7 @@ export class ApiService extends Repository {
         return this.http.get<job_Interface[]>(this.BaseURL + 'api/v1/Job')
         .pipe(
             catchError(this.handleError('getJobTop', []))
-          )
-          
+          );
 
     }
 
@@ -52,7 +48,6 @@ export class ApiService extends Repository {
         return this.http.get<Slider_Interface[]>(this.BaseURL + 'api/v1/Slider')
         .pipe(
             catchError(this.handleError('getSlider', [])),
-            
           );
     }
 
@@ -66,9 +61,9 @@ export class ApiService extends Repository {
 
     /** GET Sub_Category for Category component **/
     getSubCategory ( subCatId: any ): Observable<CategoryInterface[]> {
-        if(subCatId == null)
+        if (subCatId == null)
             { return of([]); }
-        else{
+        else {
             return this.http.get<CategoryInterface[]>(this.BaseURL + 'api/v1/category' , {
                 params: new HttpParams().set('parentId', subCatId )
             })
@@ -142,6 +137,10 @@ export class ApiService extends Repository {
     }
 
 
+    downloadFile(path): Observable<Blob> {
+        return this.http.get( path , { responseType: 'blob' });
+    }
+
 
     /* GET rate for any jobs */
     getRate( id:number ){
@@ -177,7 +176,6 @@ export class ApiService extends Repository {
 
 
      get(path:string, callback, params: any = null) {
-        debugger
         var url = this.BaseURL + path;
 
         // var q = $params(params);

@@ -24,6 +24,12 @@ export const navigation = [
     path: '/help',
     icon: 'doc'
   }
+  ,
+  {
+    text: 'دانلود',
+    path: '/download',
+    icon: 'download'
+  }
   // {
   //   text: 'جستجو',
   //   icon: 'search',

@@ -19,6 +19,7 @@ import { RequestCache, RequestCacheWithMap } from './shared/services/request-cac
 import { CushyHelpComponent } from './pages/cushy-help/cushy-help.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { DownloadComponent } from './pages/download/download.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { environment } from '../environments/environment';
     SideNavOuterToolbarComponent,
     SideNavInnerToolbarComponent,
     HomeComponent,
-    CushyHelpComponent
+    CushyHelpComponent,
+    DownloadComponent
 
   ],
   imports: [
