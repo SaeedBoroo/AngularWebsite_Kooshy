@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Title, DomSanitizer } from '@angular/platform-browser';
 import { ApiService } from 'src/app/shared/services';
 
 @Component({
@@ -9,16 +9,20 @@ import { ApiService } from 'src/app/shared/services';
 })
 export class DownloadComponent implements OnInit {
 
-  constructor(private title: Title, private api: ApiService) {
+  fileUrl: any;
+
+
+  constructor(private title: Title, private api: ApiService, private sanitizer: DomSanitizer) {
     this.title.setTitle('دانلود اپلیکیشن کوشی');
    }
 
   ngOnInit() {
-    this.api.downloadFile('http://cushy.ir/assets/download/cushy.apk').subscribe(
-      x => {
-        console.log('Download:  ', x);
-      }
-    );
-  }
+    this.api.downloadFile().subscribe(download => {
+      const data = download;
+      const blob = new Blob([data], { type: 'application/vnd.android.package-archive' });
+      this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
+    });
+    }
+
 
 }

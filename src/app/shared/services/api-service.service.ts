@@ -137,8 +137,8 @@ export class ApiService extends Repository {
     }
 
 
-    downloadFile(path): Observable<Blob> {
-        return this.http.get( path , { responseType: 'blob' });
+    downloadFile() {
+        return this.http.get( '../../../assets/download/cushy.apk' , { responseType: 'blob' });
     }
 
 
