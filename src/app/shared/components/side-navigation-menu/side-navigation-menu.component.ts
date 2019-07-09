@@ -9,8 +9,7 @@ import * as events from 'devextreme/events';
   styleUrls: ['./side-navigation-menu.component.scss']
 })
 export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
-  @ViewChild(DxTreeViewComponent)
-  menu: DxTreeViewComponent;
+  @ViewChild('DxTreeViewComponent', {static: true}) menu: DxTreeViewComponent;
 
   @Output()
   selectedItemChanged = new EventEmitter<string>();
