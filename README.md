@@ -1,6 +1,6 @@
-# AngularWebsite
+# Kooshy Angular Website.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
+This project was generated with Angular CLI version 7.1.2.
 
 ## Development server & Build
 
@@ -22,4 +22,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Further help
 
-I LOVE YOU, SAeeD :)
+WE LOVE YOU,
+[Atash Software Group](http://atashsoft.ir) :)

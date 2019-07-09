@@ -17,11 +17,14 @@ export class DownloadComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.api.downloadFile().subscribe(download => {
-      const data = download;
-      const blob = new Blob([data], { type: 'application/vnd.android.package-archive' });
-      this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-    });
+
+    this.fileUrl = 'https://drive.google.com/open?id=1bt5xJuId9muZARxeyhWO74-UZUKpM84r';
+
+    // this.api.downloadFile().subscribe(response => {
+    //   const data = response;
+    //   const blob = new Blob([data], { type: 'application/vnd.android.package-archive' });
+    //   this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
+    // });
     }
 
 
