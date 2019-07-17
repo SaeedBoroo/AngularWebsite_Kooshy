@@ -5,6 +5,7 @@ import notify from 'devextreme/ui/notify';
 export abstract class Repository {
 
     public BaseURL: string = environment.url;
+    public BaseURL_localhost: string = environment.url_localhost;
     public isLoading: boolean ;
 
     protected showNotifyError(message: string) {

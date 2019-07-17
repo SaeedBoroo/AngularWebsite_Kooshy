@@ -1,3 +1,6 @@
+
+@import "../../../themes/colors.scss";
+
 .cushy_download_item {
     border: 1px solid #ddd;
     border-radius: 7px;
@@ -19,4 +22,18 @@
 .cushy_download_item a:hover h2 {
     color: #2b7dbe !important;
     transition: ease 0.25s;
+}
+.download-img-help {
+    opacity: 0.3;
+    transition: ease 0.25s;
+}
+.download-img-help:hover {
+    opacity: 0.9;
+}
+.download-img-help img{
+    border-radius: 7px;
+}
+::ng-deep .cushy_download_item .dx-button-content {
+    font-size: 23px !important;
+    color: $cushy_green !important;
 }

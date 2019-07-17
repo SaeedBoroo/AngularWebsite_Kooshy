@@ -1,31 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { Title, DomSanitizer } from '@angular/platform-browser';
-import { ApiService } from 'src/app/shared/services';
+import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { ApiService } from "src/app/shared/services";
 
 @Component({
-  selector: 'download-app',
+  selector: "download-app",
   templateUrl: './download.component.html',
-  styleUrls: ['./download.component.scss']
+  styleUrls: ["./download.component.scss"]
 })
-export class DownloadComponent implements OnInit {
+export class DownloadComponent  implements OnInit {
+  fileUrl: 'https://drive.google.com/open?id=1bt5xJuId9muZARxeyhWO74-UZUKpM84r';
+  fileUrl2 = 'assets/download/test.pdf';
+  fileUrl_GoFile: string;
 
-  fileUrl: any;
-
-
-  constructor(private title: Title, private api: ApiService, private sanitizer: DomSanitizer) {
+  constructor(private title: Title, private api: ApiService,) {
     this.title.setTitle('دانلود اپلیکیشن کوشی');
-   }
+  }
 
   ngOnInit() {
+    this.fileUrl_GoFile = this.api.DownloadUrl_GoFile;
+  }
 
-    this.fileUrl = 'https://drive.google.com/open?id=1bt5xJuId9muZARxeyhWO74-UZUKpM84r';
-
-    // this.api.downloadFile().subscribe(response => {
-    //   const data = response;
-    //   const blob = new Blob([data], { type: 'application/vnd.android.package-archive' });
-    //   this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-    // });
-    }
+  // downloadFile() {
+  //   this.api.getFile_APK().subscribe(resp => {
+  //     saveAs(resp, 'cushy.apk');
+  //   })
+  // }
 
 
+  // download(data) {
+  //   const blob = new Blob([data], { type: 'application/vnd.android.package-archive' });
+  //   const url = window.URL.createObjectURL(blob);
+  //   console.log('URL:: ', url),
+  //   console.log('blob:: ', blob),
+  //   window.open(url);
+  // }
 }

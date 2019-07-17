@@ -12,19 +12,22 @@ import { job_Interface } from '../../interfaces/job.interface';
 
 export class HomeComponent implements OnInit,OnDestroy  {
 
-  sliderSource: Slider_Interface[] 
-  jobTopCaroucel: job_Interface[]
-  jobNewCaroucel: job_Interface[]
-  isLoading_Slider: boolean
-  isLoading_Top: boolean
-  isLoading_New: boolean
-  mySubscribe: any
+  sliderSource: Slider_Interface[]; 
+  jobTopCaroucel: job_Interface[];
+  jobNewCaroucel: job_Interface[];
+  isLoading_Slider: boolean;
+  isLoading_Top: boolean;
+  isLoading_New: boolean;
+  mySubscribe: any;
+  DownloadUrl_GoFile: string;
+
 
   constructor(private title:Title, private apiService: ApiService) {   }
 
   ngOnInit(){
 
     this.title.setTitle('اپلیکیشن کوشی | یافتن تمامی مشاغل و اصناف شهر');
+    this.DownloadUrl_GoFile = this.apiService.DownloadUrl_GoFile;
 
     this.getJobTop();
     this.getJobNew();

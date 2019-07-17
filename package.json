@@ -27,6 +27,7 @@
     "core-js": "^3.1.4",
     "devextreme": "^19.1.4",
     "devextreme-angular": "^19.1.4",
+    "file-saver": "^2.0.2",
     "ng2-smooth-scroll": "^1.0.1",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",

@@ -4,6 +4,15 @@
                     <div class="responsive-paddings mb-1 home_slider__item">
                         <div class="text-center">
                             <p class="cushy_alert_success ">"کوشی" در شهرستان مبارکه اصفهان فعال می باشد</p>
+                            
+                              <a [href]="DownloadUrl_GoFile" id="download-link" target="_blank" title="دانلود اپلیکیشن کوشی از گوگل" >
+                                <h2><dx-button [width]="300" [height]="60">
+                                  دانلود اپلیکیشن کوشی<i
+                                    class="dx-icon dx-icon-download"
+                                  ></i>
+                                </dx-button></h2>
+                              </a>
+                              
 
                             <cushy-loading *ngIf="isLoading_Slider" ></cushy-loading>
                           <dx-gallery #slider  *ngIf="!isLoading_Slider"

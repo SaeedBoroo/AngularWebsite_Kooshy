@@ -1,24 +1,23 @@
 import { Injectable } from "@angular/core";
 import { Repository } from "./Repository";
 import { Observable, of } from "rxjs";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { job_Interface } from "../interfaces/job.interface";
 import { Slider_Interface } from "../interfaces/slider.interface";
 import { CategoryInterface } from "../interfaces/category.interface";
 import { JobDetail_Interface } from "../interfaces/job-detail.interface";
 import { HandleError, HttpErrorHandler } from "./http-error-handler.service";
-import { catchError } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
 import { myErrorHandlerService } from "./my-error-handler-service";
+import { ResponseContentType } from "file-saver";
 
 @Injectable()
 export class ApiService extends Repository {
-  private handleError: HandleError;
 
-  constructor(
-    private http: HttpClient,
-    httpErrorHandler: HttpErrorHandler,
-    private myErrorHandler: myErrorHandlerService
-  ) {
+  private handleError: HandleError;
+  DownloadUrl_GoFile = 'https://srv-file5.gofile.io/download/MsrL7R/Cushy.apk';
+
+  constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler, private myErrorHandler: myErrorHandlerService) {
     super();
     this.handleError = httpErrorHandler.createHandleError("ApiService"); // add Service Name...
   }
@@ -128,11 +127,52 @@ export class ApiService extends Repository {
     }
   }
 
-  downloadFile(): Observable<Blob> {
-    return this.http.get(this.BaseURL + 'assets/download/cushy.apk', {
-      responseType: 'blob'
-    });
+/* ========================================DOWNLOAD========================================== */
+
+  getFile_APK()  {
+    let headers = new HttpHeaders();
+    headers = headers.set('Accept', 'application/vnd.android.package-archive');
+    // headers = headers.set('Accept', 'application/pdf'); //--for-pdf-files
+    return this.http.get(this.BaseURL + 'assets/download/cushy.apk', { headers: headers, responseType: 'blob' })
+      .pipe(
+        map(
+          (res) => {
+              return new Blob([res], { type: 'application/vnd.android.package-archive' })
+          }),
+        catchError(this.handleError('getFile', []))
+        );
   }
+
+
+  downloadPDF()
+  {
+
+    const headerOptions = new HttpHeaders({
+    'Content-Type': 'application/json', 
+    'Accept': 'application/pdf'
+    }); 
+
+      const requestOptions = {headers : headerOptions, responseType: 'blob' as 'blob'}; 
+      // post or get depending on your requirement
+        this.http.get(this.BaseURL + 'assets/download/test.pdf', requestOptions)
+          .pipe(
+            map((data: any) => {
+
+          const blob = new Blob([data], { 
+             type: 'application/pdf' // must match the Accept type
+          });
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'cushy.pdf';
+          link.click();
+          window.URL.revokeObjectURL(link.href);
+
+        })).subscribe((result : any) => { });
+
+  }
+/* ========================================END DOWNLOAD========================================== */
+
+
 
   /* GET rate for any jobs */
   getRate(id: number) {
